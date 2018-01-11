@@ -21,28 +21,34 @@ namespace Weapons
     public class Weapon : MonoBehaviour
     {
 
-        [SerializeField]
-        float rateOfFire;
-        [SerializeField]
-        Projectile projectile;
-
-        [SerializeField]
-        int damage;
+        [SerializeField] float rateOfFire;
+        [SerializeField] int damage;
+        [SerializeField] Projectile projectile;
+        [SerializeField] Transform hand;
+        [SerializeField] AudioController audioReload;
+        [SerializeField] AudioController audioFire;
 
         [HideInInspector]
-        public Transform muzzle;
-
-        private WeaponReloader reloader;
+        public WeaponReloader reloader;
 
         float nextFireAllowed;
+        Transform muzzle;
 
         [HideInInspector]
         public bool canFire;
 
+        public void Equip()
+        {
+            transform.SetParent(hand);      // TEMPORARY
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+        }
+        
         private void Awake()
         {
-            muzzle = transform.Find("Muzzle");
+            muzzle = transform.Find("Model/Muzzle");
             reloader = GetComponent<WeaponReloader>();
+
         }
 
         public void Reload()
@@ -51,6 +57,7 @@ namespace Weapons
             {
                 return;
             }
+            audioReload.Play();
             reloader.Reload();
         }
 
@@ -72,8 +79,6 @@ namespace Weapons
                 reloader.RemoveAmmoFromMagazine(1);
             }
 
-            print("Firing! : " + Time.time);
-
             Instantiate(projectile, muzzle.position, muzzle.rotation);
             Attack attack = new Attack(damage, muzzle.transform.position, Vector3.zero);
 
@@ -86,7 +91,7 @@ namespace Weapons
 
         public virtual void Fire(Attack attack)
         {
-
+            audioFire.Play();
         }
     }
 }

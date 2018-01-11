@@ -9,6 +9,8 @@ public class InputController : MonoBehaviour {
     [HideInInspector] public bool Fire1;
     [HideInInspector] public bool Reload;
     [HideInInspector] public bool IsWalking, IsSprinting, IsCrouched;
+    [HideInInspector] public bool MouseWheelUp, MouseWheelDown;
+
 
     private void Update()
     {
@@ -20,5 +22,7 @@ public class InputController : MonoBehaviour {
         IsWalking = Input.GetKey(KeyCode.LeftControl);
         IsSprinting = Input.GetKey(KeyCode.LeftShift);
         IsCrouched = Input.GetKey(KeyCode.C);
+        MouseWheelUp = Input.GetAxis("Mouse ScrollWheel") > 0;
+        MouseWheelDown = Input.GetAxis("Mouse ScrollWheel") < 0;
     }
 }

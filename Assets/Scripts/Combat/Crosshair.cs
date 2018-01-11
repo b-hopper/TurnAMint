@@ -12,11 +12,11 @@ namespace Weapons {
 
         public void LookHeight(float val)
         {
-            lookHeight += val;
+            /*lookHeight += val;
             if (lookHeight > maxAngle || lookHeight < minAngle)
             {
                 lookHeight -= val;
-            }
+            }*/
         }
 
         private void OnGUI()
