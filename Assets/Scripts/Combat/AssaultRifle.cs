@@ -9,7 +9,7 @@ namespace Weapons
 
         public override void Fire(Attack attack)
         {
-            
+            base.Fire(attack);
         }
 
         public override void AttemptFire()

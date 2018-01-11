@@ -51,8 +51,6 @@ namespace HealthManagement
                     Destroy(gameObject);
                 }
             }
-
-            print("Health remaining: " + currentHealth);
         }
 
         void OnDeath()

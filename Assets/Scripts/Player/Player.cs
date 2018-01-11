@@ -18,6 +18,12 @@ public class Player : MonoBehaviour {
     [SerializeField] float crouchSpeedMultiplier;
     [SerializeField] float sprintSpeedMultiplier;
     [SerializeField] MouseInput mouseControl;
+    [SerializeField] AudioController footsteps;
+    [SerializeField] float minimumFootstepDistance;
+
+    public PlayerAim playerAim;
+
+    Vector3 previousPosition;
 
     Vector2 direction;
 
@@ -45,6 +51,17 @@ public class Player : MonoBehaviour {
                 m_MoveController = GetComponent<MoveController>();
             }
             return m_MoveController;
+        }
+    }
+
+    private PlayerShoot m_PlayerShoot;
+    public PlayerShoot PlayerShoot
+    {
+        get
+        {
+            if (m_PlayerShoot == null)
+                m_PlayerShoot = GetComponent<PlayerShoot>();
+            return m_PlayerShoot;
         }
     }
 
@@ -78,12 +95,14 @@ public class Player : MonoBehaviour {
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.Sensitivity.x);
 
         Crosshair.LookHeight(mouseInput.y * mouseControl.Sensitivity.y);
+
+        playerAim.SetRotation(mouseInput.y * mouseControl.Sensitivity.y);
     }
 
     void Move()
     {
         float moveSpeed = runSpeed;
-        
+
         if (playerInput.IsCrouched)
         {
             moveSpeed *= crouchSpeedMultiplier;
@@ -99,5 +118,12 @@ public class Player : MonoBehaviour {
 
         direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
         MoveController.Move(direction);
+
+        if (Vector3.Distance(transform.position, previousPosition) > minimumFootstepDistance)
+        {
+            footsteps.Play();
+        }
+
+        previousPosition = transform.position;
     }
 }

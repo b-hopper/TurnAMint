@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour {
     [SerializeField]
     float timeToLive;
     [SerializeField]
-    float damage;
+    int damage;
 
     private void Start()
     {
@@ -24,6 +24,6 @@ public class Projectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        ExecuteEvents.Execute<HealthManagement.IAttackReceiver>(other.gameObject, null, ((handler, eventData) => handler.ReceiveAttack(new Weapons.Attack(50, Vector3.zero, Vector3.zero))));
+        ExecuteEvents.Execute<HealthManagement.IAttackReceiver>(other.gameObject, null, ((handler, eventData) => handler.ReceiveAttack(new Weapons.Attack(damage, Vector3.zero, Vector3.zero))));
     }
 }
