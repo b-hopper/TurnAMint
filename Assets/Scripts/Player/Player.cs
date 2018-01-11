@@ -10,13 +10,14 @@ public class Player : MonoBehaviour {
     {
         public Vector2 Damping;
         public Vector2 Sensitivity;
+        public bool LockMouse;
     }
 
-    [SerializeField]
-    float speed;
-
-    [SerializeField]
-    MouseInput mouseControl;
+    [SerializeField] float runSpeed;
+    [SerializeField] float walkSpeedMultiplier;
+    [SerializeField] float crouchSpeedMultiplier;
+    [SerializeField] float sprintSpeedMultiplier;
+    [SerializeField] MouseInput mouseControl;
 
     Vector2 direction;
 
@@ -54,18 +55,49 @@ public class Player : MonoBehaviour {
     {
         playerInput = GameManager.Instance.InputController;
         GameManager.Instance.LocalPlayer = this;
+
+        if (mouseControl.LockMouse)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void Update()
     {
-        direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
-        MoveController.Move(direction);
+        Move();
 
+        LookControl();
+    }
+
+    private void LookControl()
+    {
         mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / mouseControl.Damping.x);
         mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.MouseInput.y, 1f / mouseControl.Damping.y);
 
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.Sensitivity.x);
 
         Crosshair.LookHeight(mouseInput.y * mouseControl.Sensitivity.y);
+    }
+
+    void Move()
+    {
+        float moveSpeed = runSpeed;
+        
+        if (playerInput.IsCrouched)
+        {
+            moveSpeed *= crouchSpeedMultiplier;
+        }
+        else if (playerInput.IsSprinting)
+        {
+            moveSpeed *= sprintSpeedMultiplier;
+        }
+        else if (playerInput.IsWalking)
+        {
+            moveSpeed *= walkSpeedMultiplier;
+        }
+
+        direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
+        MoveController.Move(direction);
     }
 }
