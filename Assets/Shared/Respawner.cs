@@ -7,9 +7,13 @@ public class Respawner : MonoBehaviour {
     public void Despawn(GameObject go, float inSeconds)
     {
         go.SetActive(false);
-        GameManager.Instance.Timer.Add(() =>
+
+        if (inSeconds > 0)
         {
-            go.SetActive(true);
-        }, inSeconds);
+            GameManager.Instance.Timer.Add(() =>
+            {
+                go.SetActive(true);
+            }, inSeconds);
+        }
     }
 }

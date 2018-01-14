@@ -6,11 +6,12 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour {
     [SerializeField]
-    float speed;
+    float range, speed;
     [SerializeField]
     float timeToLive;
     [SerializeField]
     int damage;
+    
 
     private void Start()
     {
@@ -20,10 +21,17 @@ public class Projectile : MonoBehaviour {
     private void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, range))
+        {
+            ExecuteEvents.Execute<HealthManagement.IAttackReceiver>(hit.transform.gameObject, null, ((handler, eventData) => handler.ReceiveAttack(new Weapons.Attack(damage, Vector3.zero, Vector3.zero))));
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        ExecuteEvents.Execute<HealthManagement.IAttackReceiver>(other.gameObject, null, ((handler, eventData) => handler.ReceiveAttack(new Weapons.Attack(damage, Vector3.zero, Vector3.zero))));
+        
     }
 }
