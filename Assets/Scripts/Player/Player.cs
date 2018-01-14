@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MoveController))]
-
+[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(PlayerState))]
 public class Player : MonoBehaviour {
     [System.Serializable]
     public class MouseInput
@@ -23,32 +23,33 @@ public class Player : MonoBehaviour {
 
     public PlayerAim playerAim;
 
+    [SerializeField, Tooltip("Object to mask out when switching to first-person mode.")] public GameObject playerHead;
+
     Vector3 previousPosition;
 
     Vector2 direction;
-
-    Weapons.Crosshair m_Crosshair;
-
-    Weapons.Crosshair Crosshair
+    
+    PlayerState m_playerState;
+    public PlayerState PlayerState
     {
         get
         {
-            if (m_Crosshair == null)
+            if (m_playerState == null)
             {
-                m_Crosshair = GetComponentInChildren<Weapons.Crosshair>();
+                m_playerState = GetComponentInChildren<PlayerState>();
             }
-            return m_Crosshair;
+            return m_playerState;
         }
     }
 
-    private MoveController m_MoveController;
-    public MoveController MoveController
+    private CharacterController m_MoveController;
+    public CharacterController MoveController
     {
         get
         {
             if (m_MoveController == null)
             {
-                m_MoveController = GetComponent<MoveController>();
+                m_MoveController = GetComponent<CharacterController>();
             }
             return m_MoveController;
         }
@@ -73,6 +74,8 @@ public class Player : MonoBehaviour {
         playerInput = GameManager.Instance.InputController;
         GameManager.Instance.LocalPlayer = this;
 
+        GameManager.Instance.InputController.OnCameraViewChanged += ChangeCameraPOV;
+
         if (mouseControl.LockMouse)
         {
             Cursor.visible = false;
@@ -93,9 +96,7 @@ public class Player : MonoBehaviour {
         mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.MouseInput.y, 1f / mouseControl.Damping.y);
 
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.Sensitivity.x);
-
-        Crosshair.LookHeight(mouseInput.y * mouseControl.Sensitivity.y);
-
+        
         playerAim.SetRotation(mouseInput.y * mouseControl.Sensitivity.y);
     }
 
@@ -117,7 +118,7 @@ public class Player : MonoBehaviour {
         }
 
         direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
-        MoveController.Move(direction);
+        MoveController.Move(transform.forward * direction.x * 0.02f + transform.right * direction.y * 0.02f);
 
         if (Vector3.Distance(transform.position, previousPosition) > minimumFootstepDistance)
         {
@@ -125,5 +126,19 @@ public class Player : MonoBehaviour {
         }
 
         previousPosition = transform.position;
+    }
+
+    void ChangeCameraPOV()
+    {
+        if (PlayerState.CameraState == PlayerState.ECameraState.THIRDPERSON)
+        {
+            GameManager.Instance.MainCameraController.SetFirstPersonCameraParent(playerHead.transform);
+            PlayerState.SetCameraState(true);
+        }
+        else
+        {
+            GameManager.Instance.MainCameraController.SetThirdPersonCameraParent();
+            PlayerState.SetCameraState(false);
+        }
     }
 }

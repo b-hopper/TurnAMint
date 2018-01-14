@@ -27,9 +27,12 @@ namespace Weapons
         [SerializeField] Transform hand;
         [SerializeField] AudioController audioReload;
         [SerializeField] AudioController audioFire;
+        [SerializeField] Transform aimTarget;
 
         [HideInInspector]
         public WeaponReloader reloader;
+
+        ParticleSystem muzzleParticleSystem;
 
         float nextFireAllowed;
         Transform muzzle;
@@ -49,6 +52,7 @@ namespace Weapons
             muzzle = transform.Find("Model/Muzzle");
             reloader = GetComponent<WeaponReloader>();
 
+            muzzleParticleSystem = muzzle.GetComponent<ParticleSystem>();
         }
 
         public void Reload()
@@ -79,6 +83,8 @@ namespace Weapons
                 reloader.RemoveAmmoFromMagazine(1);
             }
 
+            muzzle.LookAt(aimTarget);
+
             Instantiate(projectile, muzzle.position, muzzle.rotation);
             Attack attack = new Attack(damage, muzzle.transform.position, Vector3.zero);
 
@@ -89,9 +95,20 @@ namespace Weapons
             canFire = true;
         }
 
+        void FireEffect()
+        {
+            if (muzzleParticleSystem == null)
+            {
+                return;
+            }
+
+            muzzleParticleSystem.Play();
+        }
+
         public virtual void Fire(Attack attack)
         {
             audioFire.Play();
+            FireEffect();
         }
     }
 }

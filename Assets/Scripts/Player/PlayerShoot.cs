@@ -80,6 +80,11 @@ public class PlayerShoot : MonoBehaviour {
             SwitchWeapon(1);
         }
         
+        if (GameManager.Instance.LocalPlayer.PlayerState.MoveState == PlayerState.EMoveState.SPRINTING)
+        {
+            return;
+        }
+
         if (GameManager.Instance.InputController.Fire1 && canFire)
         {
             activeWeapon.AttemptFire();

@@ -42,7 +42,7 @@ public class GameManager {
         {
             if (m_Timer == null)
             {
-                m_Timer = gameObject.GetComponent<Timer>();                 // Should be m_Instance.gameObject?
+                m_Timer = gameObject.GetComponent<Timer>();
             }
             return m_Timer;
         }
@@ -55,7 +55,7 @@ public class GameManager {
         {
             if (m_Respawner == null)
             {
-                m_Respawner = gameObject.GetComponent<Respawner>();         // Should be m_Instance.gameObject?
+                m_Respawner = gameObject.GetComponent<Respawner>();
             }
             return m_Respawner;
         }
@@ -75,6 +75,19 @@ public class GameManager {
             {
                 OnLocalPlayerJoined(m_LocalPlayer);
             }
+        }
+    }
+
+    private CameraController m_MainCameraController;
+    public CameraController MainCameraController
+    {
+        get
+        {
+            if (m_MainCameraController == null)
+            {
+                m_MainCameraController = Camera.main.GetComponent<CameraController>();
+            }
+            return m_MainCameraController;
         }
     }
 
