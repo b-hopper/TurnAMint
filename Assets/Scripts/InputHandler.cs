@@ -42,6 +42,10 @@ public class InputHandler : MonoBehaviour {
     float targetShake;
     float curShake;
 
+    public bool fpsMode;
+    bool canSwitch;
+    ControllerSwitcher conSwitcher;
+
     private void Start()
     {
         crosshairManager = CrosshairManager.GetInstance();
@@ -55,9 +59,15 @@ public class InputHandler : MonoBehaviour {
 
         layerMask = ~(1 << gameObject.layer);
         states.layerMask = layerMask;
+
+        conSwitcher = ControllerSwitcher.GetInstance();
+        if (conSwitcher != null)
+        {
+            canSwitch = true;
+        }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         HandleInput();
         UpdateStates();
@@ -79,12 +89,16 @@ public class InputHandler : MonoBehaviour {
             states.lookHitPosition = states.lookPosition;
         }
 
-        // Check for obstacles in front of the camera
-        CameraCollision(layerMask);
+        if (!fpsMode)
+        {
 
-        // Update camera's position
-        curZ = Mathf.Lerp(curZ, actualZ, Time.deltaTime * 15);
-        camTrans.localPosition = new Vector3(0, 0, curZ);
+            // Check for obstacles in front of the camera
+            CameraCollision(layerMask);
+
+            // Update camera's position
+            curZ = Mathf.Lerp(curZ, actualZ, Time.deltaTime * 15);
+            camTrans.localPosition = new Vector3(0, 0, curZ);
+        }
     }
 
     private void HandleShake()
@@ -131,6 +145,24 @@ public class InputHandler : MonoBehaviour {
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
         fire3 = Input.GetAxis("Fire3");
+
+        if (canSwitch)
+        {
+            if (Input.GetKeyUp(KeyCode.V))
+            {
+                Ray ray = new Ray(camTrans.position, camTrans.forward);
+                Vector3 lookPos = ray.GetPoint(20);
+
+                if (!fpsMode)
+                {
+                    conSwitcher.SwitchToFPS(lookPos);
+                }
+                else
+                {
+                    conSwitcher.SwitchToTPS(lookPos);
+                }
+            }
+        }
     }
 
     private void UpdateStates()
