@@ -66,20 +66,120 @@ public class InputHandler : MonoBehaviour {
         // Find where the camera is looking
         Ray ray = new Ray(camTrans.position, camTrans.forward);
         states.lookPosition = ray.GetPoint(20);
+        RaycastHit hit;
+
+        Debug.DrawRay(ray.origin, ray.direction);
+
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, 100, layerMask))
+        {
+            states.lookHitPosition = hit.point;
+        }
+        else
+        {
+            states.lookHitPosition = states.lookPosition;
+        }
+
+        // Check for obstacles in front of the camera
+        CameraCollision(layerMask);
+
+        // Update camera's position
+        curZ = Mathf.Lerp(curZ, actualZ, Time.deltaTime * 15);
+        camTrans.localPosition = new Vector3(0, 0, curZ);
     }
 
     private void HandleShake()
     {
-        throw new NotImplementedException();
-    }
+        if (states.shoot && states.handleShooting.curBullets > 0)
+        {
+            targetShake = shakeRecoil;
+            camProperties.WiggleCrosshairAndCamera(0.2f);
+            targetFov += 5;
+        }
+        else
+        {
+            if (states.vertical != 0)
+            {
+                targetShake = shakeMovement;
+            }
+            else
+            {
+                if (states.horizontal != 0)
+                {
+                    targetShake = shakeMovement;
+                }
+                else
+                {
+                    targetShake = shakeMin;
+                }
+            }
+        }
 
-    private void UpdateStates()
-    {
-        throw new NotImplementedException();
+        curShake = Mathf.Lerp(curShake, targetShake, Time.deltaTime * 10);
+        shakeCam.positionShakeSpeed = curShake;
+
+        curFov = Mathf.Lerp(curFov, targetFov, Time.deltaTime * 5);
+        Camera.main.fieldOfView = curFov;
     }
 
     private void HandleInput()
     {
-        throw new NotImplementedException();
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+        mouse1 = Input.GetAxis("Fire1");
+        mouse2 = Input.GetAxis("Fire2");
+        middleMouse = Input.GetAxis("Mouse ScrollWheel");
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
+        fire3 = Input.GetAxis("Fire3");
+    }
+
+    private void UpdateStates()
+    {
+        states.aiming = states.onGround && (mouse2 > 0);
+        states.canRun = !states.aiming;
+        states.walk = (fire3 > 0);
+
+        states.horizontal = horizontal;
+        states.vertical = vertical;
+
+        if (states.aiming)
+        {
+            targetZ = cameraAimingZ; // update target Z position of the camera
+            targetFov = aimingFov;
+
+            if (mouse1 > 0.5f && !states.reloading)
+            {
+                states.shoot = true;
+            }
+            else
+            {
+                states.shoot = false;
+            }
+        }
+        else
+        {
+            states.shoot = false;
+            targetZ = cameraNormalZ;
+            targetFov = normalFov;
+        }
+    }
+
+    void CameraCollision(LayerMask layerMask)
+    {
+        // Do a raycast from the pivot of the camera to the camera
+        Vector3 origin = camPivot.TransformPoint(Vector3.zero);
+        Vector3 direction = camTrans.TransformPoint(Vector3.zero) - camPivot.TransformPoint(Vector3.zero);
+        RaycastHit hit;
+
+        // the distance of the raycast is controlled by if we are aiming or not
+        actualZ = targetZ;
+
+        // if an obstacle is found
+        if (Physics.Raycast(origin, direction, out hit, Mathf.Abs(targetZ), layerMask))
+        {
+            // If we hit something, find that distance
+            float dis = Vector3.Distance(camPivot.position, hit.point);
+            actualZ = -dis; // And the opposite of that is where we want to place the camera.
+        }
     }
 }

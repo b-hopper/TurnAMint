@@ -19,16 +19,16 @@ public class StateManager : MonoBehaviour {
 
     //public CharacterAudioManager audioManager;
 
+    [HideInInspector]
+    public HandleShooting handleShooting;
     //[HideInInspector]
-    //public HandleShooting handleShooting;
-    //[HideInInspector]
-    //public HandleAnimations handleAnim;
+    public HandleAnimations handleAnim;
 
     private void Start()
     {
         //audioManager = GetComponent<CharacterAudioManager>();
-        //handleShooting = GetComponent<HandleShooting>();
-        //handleAnim = GetComponent<HandleAnimations>();
+        handleShooting = GetComponent<HandleShooting>();
+        handleAnim = GetComponent<HandleAnimations>();
     }
 
     private void FixedUpdate()
