@@ -35,7 +35,7 @@ public class CharacterAudioManager : MonoBehaviour {
 
         float targetThreshold = 0;
 
-        if (!states.walk && !states.aiming && states.reloading)
+        if (!states.walk && !states.aiming && !states.reloading)
         {
             runFoley.volume = startingVolumeRun * characterMovement;
             targetThreshold = runThreshold;

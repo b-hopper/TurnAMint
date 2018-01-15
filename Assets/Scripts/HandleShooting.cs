@@ -55,9 +55,12 @@ public class HandleShooting : MonoBehaviour {
                     rig.AddForce(transform.right.normalized * 2 + Vector3.up * 1.3f, ForceMode.Impulse);
                     rig.AddRelativeTorque(go.transform.right * 1.5f, ForceMode.Impulse);
 
-                    for (int i = 0; i < muzzle.Length; i++)
+                    if (muzzle.Length > 0)
                     {
-                        muzzle[i].Emit(1);
+                        for (int i = 0; i < muzzle.Length; i++)
+                        {
+                            muzzle[i].Emit(1);
+                        }
                     }
 
                     RaycastShoot();
