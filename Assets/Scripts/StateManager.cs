@@ -17,16 +17,16 @@ public class StateManager : MonoBehaviour {
     public Vector3 lookHitPosition;
     public LayerMask layerMask;
 
-    //public CharacterAudioManager audioManager;
+    public CharacterAudioManager audioManager;
 
     [HideInInspector]
     public HandleShooting handleShooting;
-    //[HideInInspector]
+    [HideInInspector]
     public HandleAnimations handleAnim;
 
     private void Start()
     {
-        //audioManager = GetComponent<CharacterAudioManager>();
+        audioManager = GetComponent<CharacterAudioManager>();
         handleShooting = GetComponent<HandleShooting>();
         handleAnim = GetComponent<HandleAnimations>();
     }

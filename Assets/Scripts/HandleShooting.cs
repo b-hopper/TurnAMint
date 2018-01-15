@@ -12,14 +12,19 @@ public class HandleShooting : MonoBehaviour {
     public Transform bulletSpawnPoint;
     public GameObject smokeParticle;            // IMPACT SYSTEM HERE
     public ParticleSystem[] muzzle;
-    public GameObject casingPrefab;
+    
     public Transform caseSpawn;
+
+    ObjectPool objPool;
 
     public int curBullets = 30;
 
     private void Start()
     {
+        objPool = GetComponent<ObjectPool>();
+        
         states = GetComponent<StateManager>();
+
     }
 
     bool shoot;
@@ -40,9 +45,12 @@ public class HandleShooting : MonoBehaviour {
                 if (curBullets > 0)
                 {
                     emptyGun = false;
-                    //states.audioManager.PlayGunSound();
+                    states.audioManager.PlayGunSound();
 
-                    GameObject go = Instantiate(casingPrefab, caseSpawn.position, caseSpawn.rotation) as GameObject;                       // OBJECT POOL HERE
+                    GameObject go = objPool.GetNewObj();
+                    go.transform.position = caseSpawn.position;
+                    go.transform.rotation = caseSpawn.rotation;
+
                     Rigidbody rig = go.GetComponent<Rigidbody>();
                     rig.AddForce(transform.right.normalized * 2 + Vector3.up * 1.3f, ForceMode.Impulse);
                     rig.AddRelativeTorque(go.transform.right * 1.5f, ForceMode.Impulse);
@@ -65,7 +73,7 @@ public class HandleShooting : MonoBehaviour {
                     }
                     else
                     {
-                        //states.audioManager.PlayEffect("empty_gun");
+                        states.audioManager.PlayEffect("empty_gun");
                         emptyGun = true;
                     }
                 }
