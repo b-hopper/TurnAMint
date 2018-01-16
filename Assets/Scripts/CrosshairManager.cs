@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CrosshairManager : MonoBehaviour {
@@ -6,6 +7,8 @@ public class CrosshairManager : MonoBehaviour {
     public int index;
     public Crosshair activeCrosshair;
     public Crosshair[] crosshairs;
+
+    public Text pickupItemsText;
 
     public static CrosshairManager instance;
     public static CrosshairManager GetInstance()
