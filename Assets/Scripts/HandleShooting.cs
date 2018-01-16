@@ -6,24 +6,29 @@ using UnityEngine;
 public class HandleShooting : MonoBehaviour {
 
     StateManager states;
-    public Animator weaponAnim;
-    public float fireRate;
+    [HideInInspector] public Animator weaponAnim;
+    [HideInInspector] public Animator modelAnim;
+    [HideInInspector] public float fireRate;
     float timer;
-    public Transform bulletSpawnPoint;
-    public GameObject smokeParticle;            // IMPACT SYSTEM HERE
-    public ParticleSystem[] muzzle;
-    
-    public Transform caseSpawn;
+    [HideInInspector] public Transform bulletSpawnPoint;
+    [HideInInspector] public GameObject smokeParticle;            // IMPACT SYSTEM HERE
+    [HideInInspector] public GameObject[] muzzleFlash;
 
-    ObjectPool objPool;
+    [HideInInspector] public Transform caseSpawn;
+
+    [HideInInspector] public ObjectPool objPool;
+
+    WeaponManager weaponManager;
 
     public int curBullets = 30;
+    public int magazineBullets = 0;
 
     private void Start()
     {
         objPool = GetComponent<ObjectPool>();
         
         states = GetComponent<StateManager>();
+        weaponManager = GetComponent<WeaponManager>();
 
     }
 
@@ -36,31 +41,64 @@ public class HandleShooting : MonoBehaviour {
     {
         shoot = states.shoot;
 
+        if (modelAnim != null)
+        {
+            modelAnim.SetBool("Shoot", false);
+
+            if (curBullets > 0)
+            {
+                modelAnim.SetBool("Empty", false);
+            }
+            else
+            {
+                modelAnim.SetBool("Empty", true);
+            }
+        }
+
         if (shoot)
         {
             if (timer <= 0)
             {
-                weaponAnim.SetBool("Shoot", true);
+                if (modelAnim != null)
+                {
+                    modelAnim.SetBool("Shoot", false);
+                }
+                weaponAnim.SetBool("Shoot", false);
 
                 if (curBullets > 0)
                 {
                     emptyGun = false;
                     states.audioManager.PlayGunSound();
 
-                    GameObject go = objPool.GetNewObj();
-                    go.transform.position = caseSpawn.position;
-                    go.transform.rotation = caseSpawn.rotation;
-
-                    Rigidbody rig = go.GetComponent<Rigidbody>();
-                    rig.AddForce(transform.right.normalized * 2 + Vector3.up * 1.3f, ForceMode.Impulse);
-                    rig.AddRelativeTorque(go.transform.right * 1.5f, ForceMode.Impulse);
-
-                    if (muzzle.Length > 0)
+                    if (modelAnim != null)
                     {
-                        for (int i = 0; i < muzzle.Length; i++)
+                        modelAnim.SetBool("Shoot", true);
+                    }
+
+                    weaponAnim.SetBool("Shoot", true);
+
+                    Debug.Log(objPool);
+                    if (objPool != null && caseSpawn != null)
+                    {
+                        GameObject go = objPool.GetNewObj();
+                        go.transform.position = caseSpawn.position;
+                        go.transform.rotation = caseSpawn.rotation;
+
+                        Rigidbody rig = go.GetComponent<Rigidbody>();
+                        rig.AddForce(transform.right.normalized * 2 + Vector3.up * 1.3f, ForceMode.Impulse);
+                        rig.AddRelativeTorque(go.transform.right * 1.5f, ForceMode.Impulse);
+                    }
+
+                    states.actualShooting = true;
+
+                    if (muzzleFlash.Length > 0)
+                    {
+                        int index = UnityEngine.Random.Range(0, muzzleFlash.Length - 1);
+                        muzzleFlash[index].SetActive(true);
+                        GameManager.Instance.Timer.Add(() =>
                         {
-                            muzzle[i].Emit(1);
-                        }
+                            muzzleFlash[index].SetActive(false);
+                        }, 0.1f);
                     }
 
                     RaycastShoot();
@@ -72,7 +110,7 @@ public class HandleShooting : MonoBehaviour {
                     if (emptyGun)
                     {
                         states.handleAnim.StartReload();
-                        curBullets = 30;
+                        curBullets = magazineBullets;
                     }
                     else
                     {
@@ -82,14 +120,32 @@ public class HandleShooting : MonoBehaviour {
                 }
                 timer = fireRate;
             }
+            else
+            {
+                states.actualShooting = false;
 
-            timer -= Time.deltaTime;
+                weaponAnim.SetBool("Shoot", false);
+                timer -= Time.deltaTime;
+            }            
 
         }
         else
         {
-            timer = -1;
-            weaponAnim.SetBool("Shoot", false);
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else
+            {
+                timer = 0;
+            }
+
+            states.actualShooting = false;
+
+            if (weaponAnim != null)
+            {
+                weaponAnim.SetBool("Shoot", false);
+            }
         }
     }
 
@@ -98,7 +154,7 @@ public class HandleShooting : MonoBehaviour {
         Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
         RaycastHit hit;
 
-        //Debug.DrawRay(bulletSpawnPoint.position, bulletSpawnPoint.forward * 100, Color.red, Mathf.Infinity);
+        Debug.DrawRay(bulletSpawnPoint.position, bulletSpawnPoint.forward * 100, Color.red, 15);
 
         if (Physics.Raycast(bulletSpawnPoint.position, direction, out hit, 100, states.layerMask))
         {

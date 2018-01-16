@@ -8,6 +8,7 @@ public class StateManager : MonoBehaviour {
     public bool canRun;
     public bool walk;
     public bool shoot;
+    public bool actualShooting;
     public bool reloading;
     public bool onGround;
 

@@ -28,6 +28,8 @@ public class IKHandler : MonoBehaviour {
 
     Transform aimHelper;
 
+    [HideInInspector] public bool LHIK_dis_notAiming;
+
     private void Start()
     {
         aimHelper = new GameObject("_aimHelper").transform;
@@ -40,7 +42,6 @@ public class IKHandler : MonoBehaviour {
         if (rightShoulder == null)
         {
             rightShoulder = anim.GetBoneTransform(HumanBodyBones.RightShoulder);
-            print(anim.GetBoneTransform(HumanBodyBones.RightShoulder));
         }
         else
         {
@@ -72,7 +73,14 @@ public class IKHandler : MonoBehaviour {
 
         rightHandIkWeight = lookWeight;
 
-        leftHandIkWeight = 1 - anim.GetFloat("LeftHandIKWeightOverride");
+        if (!LHIK_dis_notAiming)
+        {
+            leftHandIkWeight = 1 - anim.GetFloat("LeftHandIKWeightOverride");
+        }
+        else
+        {
+            leftHandIkWeight = (states.aiming) ? 1 - anim.GetFloat("LeftHandIKWeightOverride") : 0;
+        }
 
         HandleShoulderRotation();
     }

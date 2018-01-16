@@ -103,7 +103,7 @@ public class InputHandler : MonoBehaviour {
 
     private void HandleShake()
     {
-        if (states.shoot && states.handleShooting.curBullets > 0)
+        if (states.actualShooting && states.handleShooting.curBullets > 0)
         {
             targetShake = shakeRecoil;
             camProperties.WiggleCrosshairAndCamera(0.2f);
