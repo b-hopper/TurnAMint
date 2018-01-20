@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,18 +6,6 @@ using UnityEngine.Networking;
 
 public class StateManager : NetworkBehaviour {
 
-=======
-=======
->>>>>>> refs/remotes/origin/master
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class StateManager : MonoBehaviour {
-<<<<<<< HEAD
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> refs/remotes/origin/master
 
     public bool aiming;
     public bool canRun;
@@ -29,8 +15,6 @@ public class StateManager : MonoBehaviour {
     public bool reloading;
     public bool onGround;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     [HideInInspector] public HealthManager playerHealth;
 
     Animator[] animators;
@@ -40,24 +24,14 @@ public class StateManager : MonoBehaviour {
     Rigidbody mainRB;
 
 
-=======
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> refs/remotes/origin/master
     public float horizontal;
     public float vertical;
     public Vector3 lookPosition;
     public Vector3 lookHitPosition;
     public LayerMask layerMask;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     InputHandler input;
 
-=======
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> refs/remotes/origin/master
     public CharacterAudioManager audioManager;
 
     [HideInInspector]
@@ -65,8 +39,6 @@ public class StateManager : MonoBehaviour {
     [HideInInspector]
     public HandleAnimations handleAnim;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     PlayerRespawn respawn;
 
     private void Awake()
@@ -81,10 +53,6 @@ public class StateManager : MonoBehaviour {
         input = GetComponent<InputHandler>();
     }
 
-=======
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> refs/remotes/origin/master
     private void Start()
     {
         audioManager = GetComponent<CharacterAudioManager>();
@@ -92,8 +60,6 @@ public class StateManager : MonoBehaviour {
         handleAnim = GetComponent<HandleAnimations>();
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     public override void OnStartLocalPlayer()
     {
         input.enabled = true;
@@ -130,14 +96,6 @@ public class StateManager : MonoBehaviour {
             Debug.Log("Horizontal: " + horizontal, this);
             return;
         }
-=======
-    private void FixedUpdate()
-    {
->>>>>>> refs/remotes/origin/master
-=======
-    private void FixedUpdate()
-    {
->>>>>>> refs/remotes/origin/master
         onGround = IsOnGround();
     }
 
@@ -155,8 +113,6 @@ public class StateManager : MonoBehaviour {
 
         return retVal;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     [ClientRpc]
     public void RpcPlayerDeath()
@@ -244,8 +200,4 @@ public class StateManager : MonoBehaviour {
     {
         RpcEnableRagdoll(val);
     }
-=======
->>>>>>> refs/remotes/origin/master
-=======
->>>>>>> refs/remotes/origin/master
 }
