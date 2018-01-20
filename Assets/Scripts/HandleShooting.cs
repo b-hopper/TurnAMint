@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 
 public class HandleShooting : NetworkBehaviour {
+=======
+
+public class HandleShooting : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
 =======
 
 public class HandleShooting : MonoBehaviour {
@@ -26,8 +31,11 @@ public class HandleShooting : MonoBehaviour {
     [HideInInspector] public ObjectPool objPool;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     [HideInInspector] public ImpactProfile impactProfile;
 
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
     WeaponManager weaponManager;
@@ -90,6 +98,10 @@ public class HandleShooting : MonoBehaviour {
                     weaponAnim.SetBool("Shoot", true);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                    Debug.Log(objPool);
+>>>>>>> refs/remotes/origin/master
 =======
                     Debug.Log(objPool);
 >>>>>>> refs/remotes/origin/master
@@ -117,9 +129,13 @@ public class HandleShooting : MonoBehaviour {
                     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                     Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
 
                     CmdRaycastShoot(bulletSpawnPoint.position, direction);
+=======
+                    RaycastShoot();
+>>>>>>> refs/remotes/origin/master
 =======
                     RaycastShoot();
 >>>>>>> refs/remotes/origin/master
@@ -171,6 +187,7 @@ public class HandleShooting : MonoBehaviour {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     [Command]
     private void CmdRaycastShoot(Vector3 origin, Vector3 direction)
     {
@@ -198,6 +215,8 @@ public class HandleShooting : MonoBehaviour {
                 ExecuteEvents.Execute<IAttackReceiver>(hit.collider.gameObject, null, ((handler, eventData) => handler.CmdReceiveAttack(weaponManager.ReturnCurrentWeapon().weaponStats.attack)));
             }
 =======
+=======
+>>>>>>> refs/remotes/origin/master
     private void RaycastShoot()
     {
         Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
@@ -217,6 +236,9 @@ public class HandleShooting : MonoBehaviour {
             {
                 hit.transform.GetComponent<ShootingRangeTarget>().HitTarget();                      // HEALTHMANAGER HERE
             }*/
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
         }
     }

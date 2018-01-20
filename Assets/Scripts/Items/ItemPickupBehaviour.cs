@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,10 +10,16 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 >>>>>>> refs/remotes/origin/master
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+>>>>>>> refs/remotes/origin/master
 
 public class ItemPickupBehaviour : MonoBehaviour {
 
     public ItemsBase itemToPickup;
+<<<<<<< HEAD
 <<<<<<< HEAD
     WeaponManager wm;
     Text UItext;
@@ -111,6 +118,8 @@ public class ItemPickupBehaviour : MonoBehaviour {
         }
     }
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 	// Use this for initialization
 	void Start () {
 		
@@ -120,5 +129,8 @@ public class ItemPickupBehaviour : MonoBehaviour {
 	void Update () {
 		
 	}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 }

@@ -3,9 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using UnityEngine.Networking;
 
 public class HandleAnimations : NetworkBehaviour {
+=======
+
+public class HandleAnimations : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
 =======
 
 public class HandleAnimations : MonoBehaviour {
@@ -41,10 +46,13 @@ public class HandleAnimations : MonoBehaviour {
     private void FixedUpdate()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (!isLocalPlayer)
         {
             return;
         }
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
         states.reloading = anim.GetBool("Reloading");

@@ -114,6 +114,7 @@ NavMeshSettings:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &46275024
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +201,8 @@ MeshFilter:
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &47510559
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +263,11 @@ MonoBehaviour:
   fps: 0
   fpsController: {fileID: 839332161}
 <<<<<<< HEAD
+<<<<<<< HEAD
   tpsController: {fileID: 0}
+=======
+  tpsController: {fileID: 774594246}
+>>>>>>> refs/remotes/origin/master
 =======
   tpsController: {fileID: 774594246}
 >>>>>>> refs/remotes/origin/master
@@ -277,6 +284,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,6 +488,10 @@ MonoBehaviour:
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 >>>>>>> refs/remotes/origin/master
+=======
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &145245426
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +631,7 @@ Transform:
   m_Children:
   - {fileID: 1003003613}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 724863092}
   - {fileID: 1299439551}
   - {fileID: 734361102}
@@ -697,6 +710,8 @@ GameObject:
   m_Layer: 8
   m_Name: Footstep1
 =======
+=======
+>>>>>>> refs/remotes/origin/master
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -713,12 +728,16 @@ GameObject:
   - component: {fileID: 184568520}
   m_Layer: 5
   m_Name: Canvas
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &298545639
 Transform:
@@ -740,6 +759,12 @@ Transform:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11489088, guid: 894d603bd608d784fae910e6a32e3dea,
+=======
+--- !u!114 &184568520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11489088, guid: 894d603bd608d784fae910e6a32e3dea,
+>>>>>>> refs/remotes/origin/master
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 184568519}
@@ -849,6 +874,9 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &298545640
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 AudioSource:
   m_ObjectHideFlags: 0
@@ -961,6 +989,7 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &372449596
 Prefab:
   m_ObjectHideFlags: 0
@@ -1027,6 +1056,8 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41b8adce5bdea264698800331d4b3693, type: 2}
   m_IsPrefabParent: 0
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &382786548
@@ -1279,6 +1310,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &543493784 stripped
 Transform:
   m_PrefabParentObject: {fileID: 495450, guid: 35fcb3e44dcda644e866d4bda6c38530, type: 2}
@@ -1295,6 +1327,8 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn (2)
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &537317384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,12 +1341,16 @@ GameObject:
   - component: {fileID: 537317386}
   m_Layer: 5
   m_Name: Image (3)
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &597532829
 Transform:
@@ -1339,6 +1377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!224 &537317385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1468,6 +1508,9 @@ CanvasRenderer:
 Transform:
   m_PrefabParentObject: {fileID: 495450, guid: 35fcb3e44dcda644e866d4bda6c38530, type: 2}
   m_PrefabInternal: {fileID: 1622452159}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &653595855
 GameObject:
@@ -4964,6 +5007,7 @@ ParticleSystem:
         m_RotationOrder: 4
     vectorLabel1_3: W
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &714651251
 GameObject:
   m_ObjectHideFlags: 0
@@ -4976,6 +5020,8 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn (1)
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &696816148
 GameObject:
   m_ObjectHideFlags: 0
@@ -4988,12 +5034,16 @@ GameObject:
   - component: {fileID: 696816150}
   m_Layer: 5
   m_Name: Image (1)
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!4 &714651252
 Transform:
@@ -5033,6 +5083,8 @@ GameObject:
   m_Layer: 0
   m_Name: Cube
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!224 &696816149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5153,12 +5205,16 @@ GameObject:
   - component: {fileID: 778555504}
   m_Layer: 0
   m_Name: WPN_UMP
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!23 &724863089
 MeshRenderer:
@@ -5167,6 +5223,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 724863088}
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!4 &778555503
 Transform:
   m_ObjectHideFlags: 0
@@ -5188,6 +5246,9 @@ MeshRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 778555502}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   m_Enabled: 1
   m_CastShadows: 1
@@ -5198,7 +5259,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+=======
+  - {fileID: 2100000, guid: 5cd88525892a049419f154fdad56d5e9, type: 2}
+>>>>>>> refs/remotes/origin/master
 =======
   - {fileID: 2100000, guid: 5cd88525892a049419f154fdad56d5e9, type: 2}
 >>>>>>> refs/remotes/origin/master
@@ -5210,7 +5275,11 @@ MeshRenderer:
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_PreserveUVs: 1
+=======
+  m_PreserveUVs: 0
+>>>>>>> refs/remotes/origin/master
 =======
   m_PreserveUVs: 0
 >>>>>>> refs/remotes/origin/master
@@ -5225,6 +5294,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!65 &724863090
 BoxCollider:
@@ -5271,10 +5341,43 @@ GameObject:
   - component: {fileID: 734361099}
   m_Layer: 0
   m_Name: Cube (2)
+=======
+--- !u!33 &778555505
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 33549342155347366, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 778555502}
+  m_Mesh: {fileID: 4300000, guid: 0122dfede1991494ab753e851f95960a, type: 3}
+--- !u!1 &839332152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1961474361865136, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 839332164}
+  - component: {fileID: 839332163}
+  - component: {fileID: 839332162}
+  - component: {fileID: 839332161}
+  - component: {fileID: 839332159}
+  - component: {fileID: 839332158}
+  - component: {fileID: 839332157}
+  - component: {fileID: 839332156}
+  - component: {fileID: 839332155}
+  - component: {fileID: 839332154}
+  - component: {fileID: 839332153}
+  - component: {fileID: 839332160}
+  m_Layer: 8
+  m_Name: FPS Player
+>>>>>>> refs/remotes/origin/master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 1
 --- !u!23 &734361099
 MeshRenderer:
@@ -5672,6 +5775,57 @@ MonoBehaviour:
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 114171942515051920, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+=======
+  m_IsActive: 0
+--- !u!114 &839332153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 839332152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e686f3221e3cd429ed550d5e6b506c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectsPerElement: 30
+  ObjectsInPool:
+  - {fileID: 1570868042268166, guid: a10c4a1859b8a5a4f844ab6e587b5794, type: 2}
+--- !u!114 &839332154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114884268138307206, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 839332152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04763a116ff5aca4b8e03036e0bbf809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunSounds: {fileID: 1146240469}
+  runFoley: {fileID: 449715224}
+  footStepTimer: 0
+  walkThreshold: 0.5
+  runThreshold: 0.3
+  footStep1: {fileID: 298545640}
+  footStep2: {fileID: 1103471450}
+  footStepClips:
+  - {fileID: 8300000, guid: f66de3763d3910a4db375ea8f456be47, type: 3}
+  - {fileID: 8300000, guid: 7ec2025ba1ba86f4ab6ea990322825b4, type: 3}
+  - {fileID: 8300000, guid: 13c9a35f9de5c214887062b6b89bb8be, type: 3}
+  - {fileID: 8300000, guid: 085ab028a6d94fd408f1d2a485b8a693, type: 3}
+  - {fileID: 8300000, guid: 9dd0272658ca88b4b8ae0a5fbd24c0fc, type: 3}
+  - {fileID: 8300000, guid: 5825d3b715472fa468b264f7898e321c, type: 3}
+  effectsSource: {fileID: 145245427}
+  effectsList:
+  - name: empty_gun
+    clip: {fileID: 8300000, guid: a4d74db46f5a0a149b70762aa6c2a05b, type: 3}
+--- !u!114 &839332155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114171942515051920, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+>>>>>>> refs/remotes/origin/master
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 839332152}
@@ -5725,7 +5879,10 @@ MonoBehaviour:
   caseSpawn: {fileID: 1445894683}
   objPool: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   impactProfile: {fileID: 0}
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
   curBullets: 30
@@ -5798,7 +5955,10 @@ MonoBehaviour:
   reloading: 0
   onGround: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   playerHealth: {fileID: 0}
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
   horizontal: 0
@@ -5875,7 +6035,11 @@ Transform:
   - {fileID: 1351304298}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 9
+=======
+  m_RootOrder: 7
+>>>>>>> refs/remotes/origin/master
 =======
   m_RootOrder: 7
 >>>>>>> refs/remotes/origin/master
@@ -5956,7 +6120,10 @@ MeshFilter:
   m_GameObject: {fileID: 867370005}
   m_Mesh: {fileID: 4300006, guid: 0122dfede1991494ab753e851f95960a, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &919056642
 GameObject:
   m_ObjectHideFlags: 0
@@ -6029,6 +6196,9 @@ MonoBehaviour:
     up: {x: -20, y: 0}
   - image: {fileID: 537317386}
     up: {x: 20, y: 0}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &921040338
 GameObject:
@@ -6096,12 +6266,18 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!4 &978186542 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4207191315017132, guid: 18beeb359c6aa0f46a7babcd17a8c494,
     type: 2}
   m_PrefabInternal: {fileID: 1382248682}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &1003003609
 GameObject:
@@ -6185,7 +6361,11 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalScale: {x: 3.9142537, y: 3.9142528, z: 3.9142528}
+=======
+  m_LocalScale: {x: 1, y: 1, z: 1}
+>>>>>>> refs/remotes/origin/master
 =======
   m_LocalScale: {x: 1, y: 1, z: 1}
 >>>>>>> refs/remotes/origin/master
@@ -6224,6 +6404,7 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1103471448
 GameObject:
   m_ObjectHideFlags: 0
@@ -6235,6 +6416,8 @@ GameObject:
   - component: {fileID: 1103471449}
   - component: {fileID: 1103471450}
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &1074696628
 GameObject:
   m_ObjectHideFlags: 0
@@ -6298,6 +6481,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1103471449}
   - component: {fileID: 1103471450}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   m_Layer: 8
   m_Name: Footstep2
@@ -6429,7 +6615,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   target: {fileID: 0}
+=======
+  target: {fileID: 978186542}
+>>>>>>> refs/remotes/origin/master
 =======
   target: {fileID: 978186542}
 >>>>>>> refs/remotes/origin/master
@@ -6454,6 +6644,7 @@ Transform:
   - {fileID: 306136526}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134374266
@@ -6469,11 +6660,28 @@ GameObject:
   - component: {fileID: 1134374268}
   m_Layer: 0
   m_Name: Cube (6)
+=======
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1146240467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1509169517123412, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1146240468}
+  - component: {fileID: 1146240469}
+  m_Layer: 0
+  m_Name: Muzzle Audio Effects
+>>>>>>> refs/remotes/origin/master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &1134374267
 Transform:
   m_ObjectHideFlags: 0
@@ -6577,6 +6785,24 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1146240469
 AudioSource:
+=======
+--- !u!4 &1146240468
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4731118737866254, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1146240467}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0183, z: 0.2936}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1228800319}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1146240469
+AudioSource:
+>>>>>>> refs/remotes/origin/master
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 82786382740495610, guid: 18beeb359c6aa0f46a7babcd17a8c494,
     type: 2}
@@ -6597,6 +6823,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
+<<<<<<< HEAD
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -7148,11 +7375,85 @@ GameObject:
   - component: {fileID: 1340022903}
   m_Layer: 0
   m_Name: Cube (9)
+=======
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!1 &1228800318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1435183509233756, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1228800319}
+  - component: {fileID: 1228800320}
+  m_Layer: 0
+  m_Name: UMP
+>>>>>>> refs/remotes/origin/master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &1340022902
 Transform:
   m_ObjectHideFlags: 0
@@ -7220,6 +7521,22 @@ MeshFilter:
   m_GameObject: {fileID: 1340022901}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 =======
+=======
+--- !u!4 &1228800319
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4148248183259586, guid: 18beeb359c6aa0f46a7babcd17a8c494,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1228800318}
+  m_LocalRotation: {x: -0, y: -0.033818003, z: -0, w: 0.99942803}
+  m_LocalPosition: {x: 0.232, y: 1.441, z: 0.216}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 442457691}
+  - {fileID: 1931221352}
+  - {fileID: 653595856}
+>>>>>>> refs/remotes/origin/master
   - {fileID: 1445894683}
   - {fileID: 47510560}
   - {fileID: 1146240468}
@@ -7244,6 +7561,9 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &1351304297
 GameObject:
@@ -7280,7 +7600,10 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1001 &1382248682
 Prefab:
   m_ObjectHideFlags: 0
@@ -7402,6 +7725,9 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1395958135}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &1417737809
 GameObject:
@@ -7683,7 +8009,10 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &1568523625
 GameObject:
   m_ObjectHideFlags: 0
@@ -7758,6 +8087,9 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568523625}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1001 &1622452159
 Prefab:
@@ -7797,7 +8129,11 @@ Prefab:
     - target: {fileID: 419792, guid: 35fcb3e44dcda644e866d4bda6c38530, type: 2}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 4
+=======
+      value: 2
+>>>>>>> refs/remotes/origin/master
 =======
       value: 2
 >>>>>>> refs/remotes/origin/master
@@ -7805,6 +8141,7 @@ Prefab:
     - target: {fileID: 11430008, guid: 35fcb3e44dcda644e866d4bda6c38530, type: 2}
       propertyPath: target
       value: 
+<<<<<<< HEAD
 <<<<<<< HEAD
       objectReference: {fileID: 0}
     - target: {fileID: 11430008, guid: 35fcb3e44dcda644e866d4bda6c38530, type: 2}
@@ -7899,10 +8236,15 @@ MeshFilter:
   m_GameObject: {fileID: 1743383059}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 =======
+=======
+>>>>>>> refs/remotes/origin/master
       objectReference: {fileID: 978186542}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35fcb3e44dcda644e866d4bda6c38530, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &1770523056
 GameObject:
@@ -7933,6 +8275,7 @@ Transform:
   m_LocalPosition: {x: 0.0000000012086502, y: 0.049771268, z: 0.16175741}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 442457691}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8018,10 +8361,21 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1790707966}
 =======
+=======
+  m_Father: {fileID: 442457691}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1770523058
+MeshRenderer:
+  m_ObjectHideFlags: 0
+>>>>>>> refs/remotes/origin/master
   m_PrefabParentObject: {fileID: 23999456636730298, guid: 18beeb359c6aa0f46a7babcd17a8c494,
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1770523056}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
   m_Enabled: 1
   m_CastShadows: 1
@@ -8032,7 +8386,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+=======
+  - {fileID: 2100000, guid: 5cd88525892a049419f154fdad56d5e9, type: 2}
+>>>>>>> refs/remotes/origin/master
 =======
   - {fileID: 2100000, guid: 5cd88525892a049419f154fdad56d5e9, type: 2}
 >>>>>>> refs/remotes/origin/master
@@ -8044,7 +8402,11 @@ MeshRenderer:
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_PreserveUVs: 1
+=======
+  m_PreserveUVs: 0
+>>>>>>> refs/remotes/origin/master
 =======
   m_PreserveUVs: 0
 >>>>>>> refs/remotes/origin/master
@@ -8059,6 +8421,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!65 &1790707969
 BoxCollider:
@@ -8080,6 +8443,8 @@ MeshFilter:
   m_GameObject: {fileID: 1790707966}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!33 &1770523059
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8088,6 +8453,9 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1770523056}
   m_Mesh: {fileID: 4300012, guid: 0122dfede1991494ab753e851f95960a, type: 3}
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 --- !u!1 &1837177239
 GameObject:
@@ -8254,6 +8622,7 @@ MeshFilter:
   m_GameObject: {fileID: 1947320734}
   m_Mesh: {fileID: 4300002, guid: 0122dfede1991494ab753e851f95960a, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1970762228
 GameObject:
   m_ObjectHideFlags: 0
@@ -8340,6 +8709,8 @@ MeshFilter:
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &1991700579
 GameObject:
   m_ObjectHideFlags: 0
@@ -8372,6 +8743,7 @@ Transform:
   m_Father: {fileID: 745920941}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1001 &2016871421
 Prefab:
@@ -8457,6 +8829,8 @@ Prefab:
   m_IsPrefabParent: 0
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!1 &2051862719
 GameObject:
   m_ObjectHideFlags: 0
@@ -8532,6 +8906,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2051862719}
   m_Mesh: {fileID: 4300016, guid: 0122dfede1991494ab753e851f95960a, type: 3}
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1001 &2074816793
 Prefab:
@@ -8713,5 +9088,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master

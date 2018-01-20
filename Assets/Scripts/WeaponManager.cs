@@ -6,9 +6,12 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public int maxWeapons = 2;
     public List<WeaponReferenceBase> AvailableWeapons = new List<WeaponReferenceBase>();
 
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
     public int weaponIndex;
@@ -22,7 +25,11 @@ public class WeaponManager : MonoBehaviour {
     private void Start()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         //states = GetComponent<StateManager>();
+=======
+        // states = GetComponent<StateManager>();
+>>>>>>> refs/remotes/origin/master
 =======
         // states = GetComponent<StateManager>();
 >>>>>>> refs/remotes/origin/master
@@ -31,12 +38,15 @@ public class WeaponManager : MonoBehaviour {
         audioManager = GetComponent<CharacterAudioManager>();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (Weapons.Count > 0)
         {
             AvailableWeapons.Add(Weapons[0]);
         }
         weaponIndex = 0;
 
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
         CloseAllWeapons();
@@ -49,7 +59,11 @@ public class WeaponManager : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Q))
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             if (weaponIndex < AvailableWeapons.Count - 1)
+=======
+            if (weaponIndex < Weapons.Count - 1)
+>>>>>>> refs/remotes/origin/master
 =======
             if (weaponIndex < Weapons.Count - 1)
 >>>>>>> refs/remotes/origin/master
@@ -67,6 +81,7 @@ public class WeaponManager : MonoBehaviour {
     private void SwitchWeapon(int desiredIndex)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (desiredIndex > AvailableWeapons.Count - 1)
         {
             desiredIndex = 0;
@@ -75,12 +90,15 @@ public class WeaponManager : MonoBehaviour {
 
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> refs/remotes/origin/master
         if (currentWeapon != null)
         {
             currentWeapon.weaponModel.SetActive(false);
             currentWeapon.ikHolder.SetActive(false);
         }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         WeaponReferenceBase newWeapon = AvailableWeapons[desiredIndex];
         SetNewWeapon(newWeapon, desiredIndex);
@@ -103,6 +121,10 @@ public class WeaponManager : MonoBehaviour {
 
     void SetNewWeapon(WeaponReferenceBase newWeapon, int desiredIndex)
     {
+=======
+        WeaponReferenceBase newWeapon = Weapons[desiredIndex];
+
+>>>>>>> refs/remotes/origin/master
 =======
         WeaponReferenceBase newWeapon = Weapons[desiredIndex];
 
@@ -139,7 +161,11 @@ public class WeaponManager : MonoBehaviour {
         handleShooting.muzzleFlash = newWeapon.muzzleFlash;
         handleShooting.objPool = newWeapon.objPool;
 <<<<<<< HEAD
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> refs/remotes/origin/master
 =======
 
 >>>>>>> refs/remotes/origin/master
@@ -151,6 +177,7 @@ public class WeaponManager : MonoBehaviour {
         currentWeapon = newWeapon;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public WeaponReferenceBase ReturnCurrentWeapon()
     {
@@ -177,6 +204,8 @@ public class WeaponManager : MonoBehaviour {
         SetNewWeapon(newWeapon, weaponIndex);
     }
 
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
     private void CloseAllWeapons()
@@ -208,8 +237,11 @@ public class WeaponReferenceBase
 
     public bool dis_LHIK_notAiming;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public GameObject pickablePrefab;
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
 }
@@ -221,6 +253,7 @@ public class WeaponStats
     public int maxBullets;
     public float fireRate;
     public AudioClip shotSound;
+<<<<<<< HEAD
 <<<<<<< HEAD
     public int damage;
 
@@ -245,6 +278,8 @@ public struct Attack
         origin = newOrigin;
         hitLocation = newHitLocation;
     }
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
 }

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,11 +9,16 @@ using UnityEngine.Networking;
 public class StateManager : NetworkBehaviour {
 
 =======
+=======
+>>>>>>> refs/remotes/origin/master
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StateManager : MonoBehaviour {
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 
     public bool aiming;
@@ -23,6 +29,7 @@ public class StateManager : MonoBehaviour {
     public bool reloading;
     public bool onGround;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     [HideInInspector] public HealthManager playerHealth;
 
@@ -35,6 +42,8 @@ public class StateManager : MonoBehaviour {
 
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> refs/remotes/origin/master
     public float horizontal;
     public float vertical;
     public Vector3 lookPosition;
@@ -42,8 +51,11 @@ public class StateManager : MonoBehaviour {
     public LayerMask layerMask;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     InputHandler input;
 
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
     public CharacterAudioManager audioManager;
@@ -53,6 +65,7 @@ public class StateManager : MonoBehaviour {
     [HideInInspector]
     public HandleAnimations handleAnim;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     PlayerRespawn respawn;
 
@@ -70,6 +83,8 @@ public class StateManager : MonoBehaviour {
 
 =======
 >>>>>>> refs/remotes/origin/master
+=======
+>>>>>>> refs/remotes/origin/master
     private void Start()
     {
         audioManager = GetComponent<CharacterAudioManager>();
@@ -77,6 +92,7 @@ public class StateManager : MonoBehaviour {
         handleAnim = GetComponent<HandleAnimations>();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     public override void OnStartLocalPlayer()
     {
@@ -118,6 +134,10 @@ public class StateManager : MonoBehaviour {
     private void FixedUpdate()
     {
 >>>>>>> refs/remotes/origin/master
+=======
+    private void FixedUpdate()
+    {
+>>>>>>> refs/remotes/origin/master
         onGround = IsOnGround();
     }
 
@@ -135,6 +155,7 @@ public class StateManager : MonoBehaviour {
 
         return retVal;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     [ClientRpc]
@@ -223,6 +244,8 @@ public class StateManager : MonoBehaviour {
     {
         RpcEnableRagdoll(val);
     }
+=======
+>>>>>>> refs/remotes/origin/master
 =======
 >>>>>>> refs/remotes/origin/master
 }

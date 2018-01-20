@@ -3,9 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 <<<<<<< HEAD
+<<<<<<< HEAD
 using UnityEngine.Networking;
 
 public class InputHandler : NetworkBehaviour {
+=======
+
+public class InputHandler : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
 =======
 
 public class InputHandler : MonoBehaviour {
@@ -55,6 +60,7 @@ public class InputHandler : MonoBehaviour {
     private void Start()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         states = GetComponent<StateManager>();
 
         layerMask = ~(1 << gameObject.layer);
@@ -75,17 +81,28 @@ public class InputHandler : MonoBehaviour {
         camProperties = FreeCameraLook.GetInstance();
 
 >>>>>>> refs/remotes/origin/master
+=======
+        crosshairManager = CrosshairManager.GetInstance();
+        camProperties = FreeCameraLook.GetInstance();
+
+>>>>>>> refs/remotes/origin/master
         camPivot = camProperties.transform.GetChild(0);
         camTrans = camPivot.GetChild(0);
         shakeCam = camPivot.GetComponentInChildren<ShakeCamera>();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> refs/remotes/origin/master
         states = GetComponent<StateManager>();
 
         layerMask = ~(1 << gameObject.layer);
         states.layerMask = layerMask;
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
 
         conSwitcher = ControllerSwitcher.GetInstance();
@@ -98,6 +115,7 @@ public class InputHandler : MonoBehaviour {
     private void Update()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (isLocalPlayer)
         {
             HandleInput();
@@ -109,10 +127,15 @@ public class InputHandler : MonoBehaviour {
         }
         HandleShake();
 =======
+=======
+>>>>>>> refs/remotes/origin/master
         HandleInput();
         UpdateStates();
         HandleShake();
 
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/master
+=======
 >>>>>>> refs/remotes/origin/master
         // Find where the camera is looking
         Ray ray = new Ray(camTrans.position, camTrans.forward);
@@ -131,7 +154,11 @@ public class InputHandler : MonoBehaviour {
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (!fpsMode && isLocalPlayer)
+=======
+        if (!fpsMode)
+>>>>>>> refs/remotes/origin/master
 =======
         if (!fpsMode)
 >>>>>>> refs/remotes/origin/master
@@ -209,12 +236,17 @@ public class InputHandler : MonoBehaviour {
             }
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (mouse1 > 0)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
     
+=======
+    }
+
+>>>>>>> refs/remotes/origin/master
 =======
     }
 
