@@ -2,9 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.Networking;
 
 public class PlayerMovement : NetworkBehaviour {
+=======
+
+public class PlayerMovement : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
 
     InputHandler ih;
     StateManager states;
@@ -47,10 +52,13 @@ public class PlayerMovement : NetworkBehaviour {
 
     private void FixedUpdate()
     {
+<<<<<<< HEAD
         if (!isLocalPlayer)
         {
             return;
         }
+=======
+>>>>>>> refs/remotes/origin/master
         lookPosition = states.lookPosition;
         lookDirection = lookPosition - transform.position;
 

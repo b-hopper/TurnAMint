@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,13 @@ using UnityEngine.Networking;
 
 public class StateManager : NetworkBehaviour {
 
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StateManager : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
 
     public bool aiming;
     public bool canRun;
@@ -15,6 +23,7 @@ public class StateManager : NetworkBehaviour {
     public bool reloading;
     public bool onGround;
 
+<<<<<<< HEAD
     [HideInInspector] public HealthManager playerHealth;
 
     Animator[] animators;
@@ -24,14 +33,19 @@ public class StateManager : NetworkBehaviour {
     Rigidbody mainRB;
 
 
+=======
+>>>>>>> refs/remotes/origin/master
     public float horizontal;
     public float vertical;
     public Vector3 lookPosition;
     public Vector3 lookHitPosition;
     public LayerMask layerMask;
 
+<<<<<<< HEAD
     InputHandler input;
 
+=======
+>>>>>>> refs/remotes/origin/master
     public CharacterAudioManager audioManager;
 
     [HideInInspector]
@@ -39,6 +53,7 @@ public class StateManager : NetworkBehaviour {
     [HideInInspector]
     public HandleAnimations handleAnim;
 
+<<<<<<< HEAD
     PlayerRespawn respawn;
 
     private void Awake()
@@ -53,6 +68,8 @@ public class StateManager : NetworkBehaviour {
         input = GetComponent<InputHandler>();
     }
 
+=======
+>>>>>>> refs/remotes/origin/master
     private void Start()
     {
         audioManager = GetComponent<CharacterAudioManager>();
@@ -60,6 +77,7 @@ public class StateManager : NetworkBehaviour {
         handleAnim = GetComponent<HandleAnimations>();
     }
 
+<<<<<<< HEAD
     public override void OnStartLocalPlayer()
     {
         input.enabled = true;
@@ -96,6 +114,10 @@ public class StateManager : NetworkBehaviour {
             Debug.Log("Horizontal: " + horizontal, this);
             return;
         }
+=======
+    private void FixedUpdate()
+    {
+>>>>>>> refs/remotes/origin/master
         onGround = IsOnGround();
     }
 
@@ -113,6 +135,7 @@ public class StateManager : NetworkBehaviour {
 
         return retVal;
     }
+<<<<<<< HEAD
 
     [ClientRpc]
     public void RpcPlayerDeath()
@@ -200,4 +223,6 @@ public class StateManager : NetworkBehaviour {
     {
         RpcEnableRagdoll(val);
     }
+=======
+>>>>>>> refs/remotes/origin/master
 }

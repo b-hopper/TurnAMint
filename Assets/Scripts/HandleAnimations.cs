@@ -2,9 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.Networking;
 
 public class HandleAnimations : NetworkBehaviour {
+=======
+
+public class HandleAnimations : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
     Animator anim;
 
     StateManager states;
@@ -35,10 +40,13 @@ public class HandleAnimations : NetworkBehaviour {
 
     private void FixedUpdate()
     {
+<<<<<<< HEAD
         if (!isLocalPlayer)
         {
             return;
         }
+=======
+>>>>>>> refs/remotes/origin/master
         states.reloading = anim.GetBool("Reloading");
         anim.SetBool("Aim", states.aiming);
 

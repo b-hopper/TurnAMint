@@ -13,9 +13,15 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Pickups
   - Hitboxes
   - PlayerCollision
+=======
+  - Character
+  - Player
+  - Scanners
+>>>>>>> refs/remotes/origin/master
   - 
   - 
   - 

@@ -2,10 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 
 public class HandleShooting : NetworkBehaviour {
+=======
+
+public class HandleShooting : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
 
     StateManager states;
     [HideInInspector] public Animator weaponAnim;
@@ -20,8 +25,11 @@ public class HandleShooting : NetworkBehaviour {
 
     [HideInInspector] public ObjectPool objPool;
 
+<<<<<<< HEAD
     [HideInInspector] public ImpactProfile impactProfile;
 
+=======
+>>>>>>> refs/remotes/origin/master
     WeaponManager weaponManager;
 
     public int curBullets = 30;
@@ -81,6 +89,10 @@ public class HandleShooting : NetworkBehaviour {
 
                     weaponAnim.SetBool("Shoot", true);
 
+<<<<<<< HEAD
+=======
+                    Debug.Log(objPool);
+>>>>>>> refs/remotes/origin/master
                     if (objPool != null && caseSpawn != null)
                     {
                         GameObject go = objPool.GetNewObj();
@@ -104,9 +116,13 @@ public class HandleShooting : NetworkBehaviour {
                         }, 0.1f);
                     }
 
+<<<<<<< HEAD
                     Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
 
                     CmdRaycastShoot(bulletSpawnPoint.position, direction);
+=======
+                    RaycastShoot();
+>>>>>>> refs/remotes/origin/master
 
                     curBullets -= 1;
                 }
@@ -154,6 +170,7 @@ public class HandleShooting : NetworkBehaviour {
         }
     }
 
+<<<<<<< HEAD
     [Command]
     private void CmdRaycastShoot(Vector3 origin, Vector3 direction)
     {
@@ -180,6 +197,27 @@ public class HandleShooting : NetworkBehaviour {
             {
                 ExecuteEvents.Execute<IAttackReceiver>(hit.collider.gameObject, null, ((handler, eventData) => handler.CmdReceiveAttack(weaponManager.ReturnCurrentWeapon().weaponStats.attack)));
             }
+=======
+    private void RaycastShoot()
+    {
+        Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
+        RaycastHit hit;
+
+        Debug.DrawRay(bulletSpawnPoint.position, bulletSpawnPoint.forward * 100, Color.red, 15);
+
+        if (Physics.Raycast(bulletSpawnPoint.position, direction, out hit, 100, states.layerMask))
+        {
+            if (smokeParticle != null)
+            {
+                GameObject go = Instantiate(smokeParticle, hit.point, Quaternion.identity) as GameObject;
+                go.transform.LookAt(bulletSpawnPoint.position);
+            }
+
+            /*if (hit.transform.GetComponent<ShootingRangeTarget>())
+            {
+                hit.transform.GetComponent<ShootingRangeTarget>().HitTarget();                      // HEALTHMANAGER HERE
+            }*/
+>>>>>>> refs/remotes/origin/master
         }
     }
 }

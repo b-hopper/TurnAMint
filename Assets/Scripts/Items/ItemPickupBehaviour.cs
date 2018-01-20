@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+>>>>>>> refs/remotes/origin/master
 
 public class ItemPickupBehaviour : MonoBehaviour {
 
     public ItemsBase itemToPickup;
+<<<<<<< HEAD
     WeaponManager wm;
     Text UItext;
     bool initItem;
@@ -103,4 +110,15 @@ public class ItemPickupBehaviour : MonoBehaviour {
             UItext.text = "Press F to switch " + wm.ReturnCurrentWeapon().weaponID + " with " + targetId;
         }
     }
+=======
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+>>>>>>> refs/remotes/origin/master
 }

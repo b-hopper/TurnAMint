@@ -228,14 +228,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 121030}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: ea20bccc012c3534ba2136408a111c67, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: c8c5937d14aea5741bf073af0c7b4746, type: 3}
+>>>>>>> refs/remotes/origin/master
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
   activeCrosshair: {fileID: 0}
   crosshairs:
   - {fileID: 11489322}
+<<<<<<< HEAD
   pickupItemsText: {fileID: 114439433116964008}
+=======
+>>>>>>> refs/remotes/origin/master
 --- !u!114 &11489088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -260,7 +267,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 163908}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 84904592c10b58f449f28189d28e21ea, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: a7330c50f56385a4e931132fe3a1f258, type: 3}
+>>>>>>> refs/remotes/origin/master
   m_Name: 
   m_EditorClassIdentifier: 
   CrosshairName: Cross
@@ -366,7 +377,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 22468178}
+<<<<<<< HEAD
   - {fileID: 224662108797163166}
+=======
+>>>>>>> refs/remotes/origin/master
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -499,6 +513,7 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 149738}
   m_IsPrefabParent: 1
+<<<<<<< HEAD
 --- !u!1 &1063986356305102
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,3 +605,5 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 600, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+=======
+>>>>>>> refs/remotes/origin/master

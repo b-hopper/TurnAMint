@@ -2,9 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using UnityEngine.Networking;
 
 public class InputHandler : NetworkBehaviour {
+=======
+
+public class InputHandler : MonoBehaviour {
+>>>>>>> refs/remotes/origin/master
 
     public float horizontal;
     public float vertical;
@@ -49,6 +54,7 @@ public class InputHandler : NetworkBehaviour {
 
     private void Start()
     {
+<<<<<<< HEAD
         states = GetComponent<StateManager>();
 
         layerMask = ~(1 << gameObject.layer);
@@ -64,11 +70,23 @@ public class InputHandler : NetworkBehaviour {
 
         camProperties.target = transform;
 
+=======
+        crosshairManager = CrosshairManager.GetInstance();
+        camProperties = FreeCameraLook.GetInstance();
+
+>>>>>>> refs/remotes/origin/master
         camPivot = camProperties.transform.GetChild(0);
         camTrans = camPivot.GetChild(0);
         shakeCam = camPivot.GetComponentInChildren<ShakeCamera>();
 
+<<<<<<< HEAD
 
+=======
+        states = GetComponent<StateManager>();
+
+        layerMask = ~(1 << gameObject.layer);
+        states.layerMask = layerMask;
+>>>>>>> refs/remotes/origin/master
 
         conSwitcher = ControllerSwitcher.GetInstance();
         if (conSwitcher != null)
@@ -79,6 +97,7 @@ public class InputHandler : NetworkBehaviour {
 
     private void Update()
     {
+<<<<<<< HEAD
         if (isLocalPlayer)
         {
             HandleInput();
@@ -89,6 +108,12 @@ public class InputHandler : NetworkBehaviour {
             return;
         }
         HandleShake();
+=======
+        HandleInput();
+        UpdateStates();
+        HandleShake();
+
+>>>>>>> refs/remotes/origin/master
         // Find where the camera is looking
         Ray ray = new Ray(camTrans.position, camTrans.forward);
         states.lookPosition = ray.GetPoint(20);
@@ -105,7 +130,11 @@ public class InputHandler : NetworkBehaviour {
             states.lookHitPosition = states.lookPosition;
         }
 
+<<<<<<< HEAD
         if (!fpsMode && isLocalPlayer)
+=======
+        if (!fpsMode)
+>>>>>>> refs/remotes/origin/master
         {
 
             // Check for obstacles in front of the camera
@@ -179,12 +208,17 @@ public class InputHandler : NetworkBehaviour {
                 }
             }
         }
+<<<<<<< HEAD
         if (mouse1 > 0)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
     
+=======
+    }
+
+>>>>>>> refs/remotes/origin/master
     private void UpdateStates()
     {
         states.aiming = states.onGround && (mouse2 > 0);
