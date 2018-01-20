@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class InputHandler : MonoBehaviour {
+public class InputHandler : NetworkBehaviour {
 
     public float horizontal;
     public float vertical;
@@ -48,17 +49,26 @@ public class InputHandler : MonoBehaviour {
 
     private void Start()
     {
+        states = GetComponent<StateManager>();
+
+        layerMask = ~(1 << gameObject.layer);
+        states.layerMask = layerMask;
+
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         crosshairManager = CrosshairManager.GetInstance();
         camProperties = FreeCameraLook.GetInstance();
+
+        camProperties.target = transform;
 
         camPivot = camProperties.transform.GetChild(0);
         camTrans = camPivot.GetChild(0);
         shakeCam = camPivot.GetComponentInChildren<ShakeCamera>();
 
-        states = GetComponent<StateManager>();
 
-        layerMask = ~(1 << gameObject.layer);
-        states.layerMask = layerMask;
 
         conSwitcher = ControllerSwitcher.GetInstance();
         if (conSwitcher != null)
@@ -69,10 +79,16 @@ public class InputHandler : MonoBehaviour {
 
     private void Update()
     {
-        HandleInput();
+        if (isLocalPlayer)
+        {
+            HandleInput();
+        }
         UpdateStates();
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         HandleShake();
-
         // Find where the camera is looking
         Ray ray = new Ray(camTrans.position, camTrans.forward);
         states.lookPosition = ray.GetPoint(20);
@@ -89,7 +105,7 @@ public class InputHandler : MonoBehaviour {
             states.lookHitPosition = states.lookPosition;
         }
 
-        if (!fpsMode)
+        if (!fpsMode && isLocalPlayer)
         {
 
             // Check for obstacles in front of the camera
@@ -163,8 +179,12 @@ public class InputHandler : MonoBehaviour {
                 }
             }
         }
+        if (mouse1 > 0)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
-
+    
     private void UpdateStates()
     {
         states.aiming = states.onGround && (mouse2 > 0);

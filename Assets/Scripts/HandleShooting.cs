@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Networking;
 
-public class HandleShooting : MonoBehaviour {
+public class HandleShooting : NetworkBehaviour {
 
     StateManager states;
     [HideInInspector] public Animator weaponAnim;
@@ -17,6 +19,8 @@ public class HandleShooting : MonoBehaviour {
     [HideInInspector] public Transform caseSpawn;
 
     [HideInInspector] public ObjectPool objPool;
+
+    [HideInInspector] public ImpactProfile impactProfile;
 
     WeaponManager weaponManager;
 
@@ -77,7 +81,6 @@ public class HandleShooting : MonoBehaviour {
 
                     weaponAnim.SetBool("Shoot", true);
 
-                    Debug.Log(objPool);
                     if (objPool != null && caseSpawn != null)
                     {
                         GameObject go = objPool.GetNewObj();
@@ -101,7 +104,9 @@ public class HandleShooting : MonoBehaviour {
                         }, 0.1f);
                     }
 
-                    RaycastShoot();
+                    Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
+
+                    CmdRaycastShoot(bulletSpawnPoint.position, direction);
 
                     curBullets -= 1;
                 }
@@ -149,25 +154,32 @@ public class HandleShooting : MonoBehaviour {
         }
     }
 
-    private void RaycastShoot()
+    [Command]
+    private void CmdRaycastShoot(Vector3 origin, Vector3 direction)
     {
-        Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
+        print("shoot test: " + this);
         RaycastHit hit;
 
-        Debug.DrawRay(bulletSpawnPoint.position, bulletSpawnPoint.forward * 100, Color.red, 15);
+        Debug.DrawRay(origin, direction * 100, Color.red, 15);
 
-        if (Physics.Raycast(bulletSpawnPoint.position, direction, out hit, 100, states.layerMask))
+        if (Physics.Raycast(origin, direction, out hit, 100, states.layerMask))
         {
-            if (smokeParticle != null)
+            if (impactProfile != null)
             {
-                GameObject go = Instantiate(smokeParticle, hit.point, Quaternion.identity) as GameObject;
-                go.transform.LookAt(bulletSpawnPoint.position);
+                ImpactInfo impact = impactProfile.GetImpactInfo(hit);
+                GameObject cloneImpact = Instantiate(impact.GetRandomPrefab(), hit.point, Quaternion.LookRotation(hit.normal)) as GameObject;   // Need to decide where Object Pool goes, here
+                cloneImpact.transform.parent = hit.transform;
             }
+            print("Hit: " + hit.collider.gameObject);
 
-            /*if (hit.transform.GetComponent<ShootingRangeTarget>())
+            if (isServer)
             {
-                hit.transform.GetComponent<ShootingRangeTarget>().HitTarget();                      // HEALTHMANAGER HERE
-            }*/
+                ExecuteEvents.Execute<IAttackReceiver>(hit.collider.gameObject, null, ((handler, eventData) => handler.RpcReceiveAttack(weaponManager.ReturnCurrentWeapon().weaponStats.attack)));
+            }
+            else
+            {
+                ExecuteEvents.Execute<IAttackReceiver>(hit.collider.gameObject, null, ((handler, eventData) => handler.CmdReceiveAttack(weaponManager.ReturnCurrentWeapon().weaponStats.attack)));
+            }
         }
     }
 }

@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : NetworkBehaviour {
 
     InputHandler ih;
     StateManager states;
@@ -46,6 +47,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         lookPosition = states.lookPosition;
         lookDirection = lookPosition - transform.position;
 

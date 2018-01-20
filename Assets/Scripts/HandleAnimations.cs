@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class HandleAnimations : MonoBehaviour {
+public class HandleAnimations : NetworkBehaviour {
     Animator anim;
 
     StateManager states;
@@ -34,6 +35,10 @@ public class HandleAnimations : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         states.reloading = anim.GetBool("Reloading");
         anim.SetBool("Aim", states.aiming);
 

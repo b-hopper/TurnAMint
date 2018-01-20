@@ -13,9 +13,9 @@ TagManager:
   - UI
   - 
   - 
-  - Character
-  - Player
-  - Scanners
+  - Pickups
+  - Hitboxes
+  - PlayerCollision
   - 
   - 
   - 
