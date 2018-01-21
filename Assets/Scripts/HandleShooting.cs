@@ -72,8 +72,7 @@ public class HandleShooting : NetworkBehaviour {
                 if (curBullets > 0)
                 {
                     emptyGun = false;
-                    states.audioManager.PlayGunSound();
-
+                    
                     if (modelAnim != null)
                     {
                         modelAnim.SetBool("Shoot", true);
@@ -81,32 +80,17 @@ public class HandleShooting : NetworkBehaviour {
 
                     weaponAnim.SetBool("Shoot", true);
 
-                    if (objPool != null && caseSpawn != null)
-                    {
-                        GameObject go = objPool.GetNewObj();
-                        go.transform.position = caseSpawn.position;
-                        go.transform.rotation = caseSpawn.rotation;
-
-                        Rigidbody rig = go.GetComponent<Rigidbody>();
-                        rig.AddForce(transform.right.normalized * 2 + Vector3.up * 1.3f, ForceMode.Impulse);
-                        rig.AddRelativeTorque(go.transform.right * 1.5f, ForceMode.Impulse);
-                    }
 
                     states.actualShooting = true;
 
-                    if (muzzleFlash.Length > 0)
-                    {
-                        int index = UnityEngine.Random.Range(0, muzzleFlash.Length - 1);
-                        muzzleFlash[index].SetActive(true);
-                        GameManager.Instance.Timer.Add(() =>
-                        {
-                            muzzleFlash[index].SetActive(false);
-                        }, 0.1f);
-                    }
-
                     Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
 
-                    CmdRaycastShoot(bulletSpawnPoint.position, direction);
+                    print("Origin: " + bulletSpawnPoint.position + ", Direction: " + direction);
+                    if (isLocalPlayer)
+                    {
+                        CmdDoOnShootActions();
+                        CmdRaycastShoot(bulletSpawnPoint.position, direction);
+                    }
 
                     curBullets -= 1;
                 }
@@ -154,11 +138,40 @@ public class HandleShooting : NetworkBehaviour {
         }
     }
 
+    private void CmdDoOnShootActions()
+    {
+        states.audioManager.PlayGunSound();
+
+        if (muzzleFlash.Length > 0)
+        {
+            int index = UnityEngine.Random.Range(0, muzzleFlash.Length - 1);
+            muzzleFlash[index].SetActive(true);
+            GameManager.Instance.Timer.Add(() =>
+            {
+                muzzleFlash[index].SetActive(false);
+            }, 0.1f);
+        }
+
+        if (objPool != null && caseSpawn != null)
+        {
+            GameObject go = objPool.GetNewObj();
+            go.transform.position = caseSpawn.position;
+            go.transform.rotation = caseSpawn.rotation;
+
+            Rigidbody rig = go.GetComponent<Rigidbody>();
+            rig.AddForce(transform.right.normalized * 2 + Vector3.up * 1.3f, ForceMode.Impulse);
+            rig.AddRelativeTorque(go.transform.right * 1.5f, ForceMode.Impulse);
+        }
+    }
+
     [Command]
     private void CmdRaycastShoot(Vector3 origin, Vector3 direction)
     {
+        states.audioManager.PlayGunSound();
         print("shoot test: " + this);
         RaycastHit hit;
+
+        print("Origin: " + origin + ", Direction: " + direction);
 
         Debug.DrawRay(origin, direction * 100, Color.red, 15);
 

@@ -42,12 +42,12 @@ public class HandleAnimations : NetworkBehaviour {
         states.reloading = anim.GetBool("Reloading");
         anim.SetBool("Aim", states.aiming);
 
-        if (!states.canRun)
-        {
-            anim.SetFloat("Forward", states.vertical, 0.1f, Time.deltaTime);
-            anim.SetFloat("Sideways", states.horizontal, 0.1f, Time.deltaTime);
-        }
-        else
+        //if (!states.canRun)
+        //{
+            anim.SetFloat("Forward", states.vertical * (states.walk ? 0.5f : 1), 0.1f, Time.deltaTime);
+            anim.SetFloat("Sideways", states.horizontal * (states.walk ? 0.5f : 1), 0.1f, Time.deltaTime);
+        //}
+        /*else
         {
             float movement = Mathf.Abs(states.vertical) + Mathf.Abs(states.horizontal);
 
@@ -56,7 +56,7 @@ public class HandleAnimations : NetworkBehaviour {
             movement = Mathf.Clamp(movement, 0, (walk || states.reloading) ? 0.5f : 1);
 
             anim.SetFloat("Forward", movement, 0.1f, Time.deltaTime);
-        }
+        }*/
     }
 
     public void StartReload()

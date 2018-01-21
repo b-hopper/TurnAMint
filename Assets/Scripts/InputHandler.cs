@@ -14,6 +14,7 @@ public class InputHandler : NetworkBehaviour {
     public float middleMouse;
     public float mouseX;
     public float mouseY;
+    public bool crouching;
 
     [HideInInspector]
     public FreeCameraLook camProperties;
@@ -47,9 +48,14 @@ public class InputHandler : NetworkBehaviour {
     bool canSwitch;
     ControllerSwitcher conSwitcher;
 
-    private void Start()
+
+    private void Awake()
     {
         states = GetComponent<StateManager>();
+    }
+    
+    private void Start()
+    {
 
         layerMask = ~(1 << gameObject.layer);
         states.layerMask = layerMask;
@@ -92,22 +98,23 @@ public class InputHandler : NetworkBehaviour {
         // Find where the camera is looking
         Ray ray = new Ray(camTrans.position, camTrans.forward);
         states.lookPosition = ray.GetPoint(20);
+        Debug.Log(states.lookPosition);
         RaycastHit hit;
-
-        Debug.DrawRay(ray.origin, ray.direction);
+        
+        Vector3 lookHitPosition;
 
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 100, layerMask))
         {
-            states.lookHitPosition = hit.point;
+            lookHitPosition = hit.point;
         }
         else
         {
-            states.lookHitPosition = states.lookPosition;
+            lookHitPosition = states.lookPosition;
         }
-
+        states.lookHitPosition = lookHitPosition;
+                        
         if (!fpsMode && isLocalPlayer)
         {
-
             // Check for obstacles in front of the camera
             CameraCollision(layerMask);
 
@@ -115,6 +122,26 @@ public class InputHandler : NetworkBehaviour {
             curZ = Mathf.Lerp(curZ, actualZ, Time.deltaTime * 15);
             camTrans.localPosition = new Vector3(0, 0, curZ);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.gray;
+        Gizmos.DrawLine(transform.position + (Vector3.up * 1.5f), states.lookHitPosition);
+        Gizmos.color = (Color.red + Color.yellow);
+        Gizmos.DrawCube(states.lookHitPosition, Vector3.one * 0.1f);
+    }
+
+    [Command]
+    void CmdSetLookPosition(Vector3 lookPos)
+    {
+        states.lookHitPosition = lookPos;
+    }
+
+    [ClientRpc]
+    void RpcSetLookPosition(Vector3 lookPos)
+    {
+        CmdSetLookPosition(lookPos);
     }
 
     private void HandleShake()

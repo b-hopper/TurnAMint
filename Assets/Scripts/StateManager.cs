@@ -26,6 +26,7 @@ public class StateManager : NetworkBehaviour {
 
     public float horizontal;
     public float vertical;
+    [SyncVar]
     public Vector3 lookPosition;
     public Vector3 lookHitPosition;
     public LayerMask layerMask;
@@ -93,7 +94,6 @@ public class StateManager : NetworkBehaviour {
     {
         if (!isLocalPlayer)
         {
-            Debug.Log("Horizontal: " + horizontal, this);
             return;
         }
         onGround = IsOnGround();
@@ -117,7 +117,6 @@ public class StateManager : NetworkBehaviour {
     [ClientRpc]
     public void RpcPlayerDeath()
     {
-        Debug.Log("Death");
         if (isServer)
         {
             RpcEnableRagdoll(true);
@@ -152,7 +151,6 @@ public class StateManager : NetworkBehaviour {
     [ClientRpc]
     public void RpcPlayerRespawn()
     {
-        Debug.Log("Respawned", this);
         if (isServer)
         {
             RpcEnableRagdoll(false);

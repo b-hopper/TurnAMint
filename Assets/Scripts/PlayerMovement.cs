@@ -90,14 +90,14 @@ public class PlayerMovement : NetworkBehaviour {
 
     private void HandleRotation(Vector3 h, Vector3 v, bool onGround)
     {
-        if (states.aiming)
-        {
+        //if (states.aiming)
+        //{
             lookDirection.y = 0;
 
             Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
             transform.rotation = Quaternion.Slerp(rb.rotation, targetRotation, Time.deltaTime * rotateSpeed);
-        }
-        else
+        //}
+        /*else              // Allows for rotation away from look position. Not needed for TurnAMint
         {
             storeDirection = transform.position + h + v;
 
@@ -117,7 +117,7 @@ public class PlayerMovement : NetworkBehaviour {
                     }
                 }
             }
-        }
+        }*/
     }
 
     private void HandleMovement(Vector3 h, Vector3 v, bool onGround)
