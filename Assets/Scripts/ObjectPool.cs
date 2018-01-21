@@ -9,8 +9,24 @@ public class ObjectPool : MonoBehaviour
     Dictionary<int, GameObject[]> ObjPool;
     int[] objIndex;
     int poolIndex;
+    bool populated;
+
+    public ObjectPool(GameObject[] obj, int objsPerPool, string name)
+    {
+        ObjectsInPool = obj;
+        ObjectsPerElement = objsPerPool;
+        PopulatePool();
+    }
 
     private void Start()
+    {
+        if (!populated)
+        {
+            PopulatePool();
+        }
+    }
+
+    private void PopulatePool()
     {
         ObjPool = new Dictionary<int, GameObject[]>();
         poolIndex = 0;
@@ -25,12 +41,13 @@ public class ObjectPool : MonoBehaviour
                 GameObject tmp = Instantiate(obj);
                 pool[i] = tmp;
                 tmp.SetActive(false);
-                tmp.transform.parent = newPool.transform;                    
+                tmp.transform.parent = newPool.transform;
             }
             ObjPool.Add(poolIndex, pool);
             poolIndex++;
         }
         poolIndex--;
+        populated = true;
     }
 
     public GameObject GetNewObj()

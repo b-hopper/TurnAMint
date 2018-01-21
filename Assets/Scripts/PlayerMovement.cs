@@ -120,6 +120,12 @@ public class PlayerMovement : NetworkBehaviour {
         }*/
     }
 
+    public void HandleJump(float jumpStrength)
+    {
+        rb.AddForce(Vector3.up * jumpStrength, ForceMode.Impulse);
+        
+    }
+
     private void HandleMovement(Vector3 h, Vector3 v, bool onGround)
     {
         if (onGround)

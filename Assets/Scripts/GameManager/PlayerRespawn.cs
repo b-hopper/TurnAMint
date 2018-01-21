@@ -6,7 +6,6 @@ public class PlayerRespawn : MonoBehaviour
 {
 
     [SerializeField] SpawnPoint[] spawnPoints;
-    [SerializeField] float spawnDelay;
 
     HealthManager health;
 
@@ -16,7 +15,7 @@ public class PlayerRespawn : MonoBehaviour
         spawnPoints = FindObjectsOfType<SpawnPoint>();
     }
 
-    public void RespawnAtSpawnPoint(StateManager playerState)
+    public void RespawnAtSpawnPoint(StateManager playerState, float delay)
     {
         GameManager.Instance.Timer.Add(() =>
         {
@@ -24,6 +23,6 @@ public class PlayerRespawn : MonoBehaviour
             int spawnIndex = Random.Range(0, spawnPoints.Length);
             transform.position = spawnPoints[spawnIndex].transform.position;
             transform.rotation = spawnPoints[spawnIndex].transform.rotation;
-        }, spawnDelay);
+        }, delay);
     }
 }

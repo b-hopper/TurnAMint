@@ -2,19 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 
 public class HandleAnimations : NetworkBehaviour {
     Animator anim;
-
+    
     StateManager states;
     Vector3 lookDirection;
-
+    
     private void Start()
-    {
+    {        
         states = GetComponent<StateManager>();
+        states.OnJumpLanded += EndJumpAnim;
+        states.OnJumpStarted += DoJumpAnim;
+        states.playerHealth.OnDamaged += DoDamagedAnim;
         SetupAnimator();
     }
+
 
     private void SetupAnimator()
     {
@@ -41,22 +46,12 @@ public class HandleAnimations : NetworkBehaviour {
         }
         states.reloading = anim.GetBool("Reloading");
         anim.SetBool("Aim", states.aiming);
+        
+        anim.SetFloat("Forward", states.vertical * (states.walk || states.aiming ? 0.5f : 1), 0.1f, Time.deltaTime);
+        anim.SetFloat("Sideways", states.horizontal * (states.walk || states.aiming ? 0.5f : 1), 0.1f, Time.deltaTime);
 
-        //if (!states.canRun)
-        //{
-            anim.SetFloat("Forward", states.vertical * (states.walk ? 0.5f : 1), 0.1f, Time.deltaTime);
-            anim.SetFloat("Sideways", states.horizontal * (states.walk ? 0.5f : 1), 0.1f, Time.deltaTime);
-        //}
-        /*else
-        {
-            float movement = Mathf.Abs(states.vertical) + Mathf.Abs(states.horizontal);
+        anim.SetBool("Crouching", states.crouching);
 
-            bool walk = states.walk;
-
-            movement = Mathf.Clamp(movement, 0, (walk || states.reloading) ? 0.5f : 1);
-
-            anim.SetFloat("Forward", movement, 0.1f, Time.deltaTime);
-        }*/
     }
 
     public void StartReload()
@@ -65,5 +60,21 @@ public class HandleAnimations : NetworkBehaviour {
         {
             anim.SetTrigger("Reload");
         }
+    }
+
+    private void DoJumpAnim()
+    {
+        anim.SetTrigger("Jump");
+        anim.SetBool("Jumping", true);
+    }
+
+    private void EndJumpAnim()
+    {
+        anim.SetBool("Jumping", false);
+    }
+
+    private void DoDamagedAnim(Attack attack)
+    {
+        anim.SetTrigger("PlayerDamaged");
     }
 }

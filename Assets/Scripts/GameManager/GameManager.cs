@@ -21,7 +21,7 @@ public class GameManager {
             return m_Instance;
         }
     }
-
+    
     private Timer m_Timer;
     public Timer Timer {
         get

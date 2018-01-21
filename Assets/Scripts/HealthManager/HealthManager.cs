@@ -11,10 +11,14 @@ public class HealthManager : NetworkBehaviour, IAttackReceiver {
 	[SerializeField]
 	bool destroyOnDepleted = false;
 
+    CharacterHitEffects hitEffects;
+
     StateManager state;
 
-    public UnityEvent OnDamaged;
-    public UnityEvent OnHealthDepleted;
+    public delegate void HealthChangedEvent(Attack attack);
+
+    public HealthChangedEvent OnDamaged;
+    public HealthChangedEvent OnHealthDepleted;
 
     public bool isAlive
     {
@@ -39,6 +43,7 @@ public class HealthManager : NetworkBehaviour, IAttackReceiver {
 
     private void Awake()
     {
+        hitEffects = GetComponent<CharacterHitEffects>();
         state = GetComponent<StateManager>();
     }
 
@@ -51,11 +56,23 @@ public class HealthManager : NetworkBehaviour, IAttackReceiver {
     {
         currentHealth -= attack.damage;
         print(attack.damage);
-        OnDamaged.Invoke();
+        
+        if (OnDamaged != null)
+        {
+            OnDamaged(attack);
+        }
+
+        if (hitEffects != null)
+        {
+            hitEffects.PlayEffect("normalHit", attack.hitLocation, attack.origin - attack.hitLocation);
+        }
 
         if (currentHealth <= 0)
         {
-            OnHealthDepleted.Invoke();
+            if (OnHealthDepleted != null)
+            {
+                OnHealthDepleted(attack);
+            }
             if (destroyOnDepleted)
             {
                 Destroy(gameObject);
@@ -69,6 +86,7 @@ public class HealthManager : NetworkBehaviour, IAttackReceiver {
         RpcReceiveAttack(attack);
     }
 
+
     public void Reset () {
 		currentHealth = maxHealth;
         if (isServer)
@@ -79,5 +97,21 @@ public class HealthManager : NetworkBehaviour, IAttackReceiver {
         {
             state.CmdPlayerRespawn();
         }
-	}
+    }
+
+    #region Test Functions
+
+    [ContextMenu("Test Die")]
+    void TestDie()
+    {
+        CmdReceiveAttack(new Attack(maxHealth, Vector3.zero, Vector3.zero));
+    }
+
+    [ContextMenu("Test Damage 30")]
+    void TestDamage30()
+    {
+        CmdReceiveAttack(new Attack(30, Vector3.zero, Vector3.up * 1.5f));
+    }
+
+    #endregion
 }

@@ -20,7 +20,7 @@ public class FreeCameraLook : Pivot {
 	private float smoothYvelocity = 0;
 
     public float crosshairOffsetWiggle = 0.2f;
-    CrosshairManager crosshairManager;
+    UIManager crosshairManager;
 
     //add the singleton
     public static FreeCameraLook instance;
@@ -47,7 +47,7 @@ public class FreeCameraLook : Pivot {
         if (lockCursor)
             Cursor.lockState = CursorLockMode.Locked;
 
-        crosshairManager = CrosshairManager.GetInstance();
+        crosshairManager = UIManager.GetInstance();
     }
 	
 	// Update is called once per frame

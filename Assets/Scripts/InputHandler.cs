@@ -16,6 +16,9 @@ public class InputHandler : NetworkBehaviour {
     public float mouseY;
     public bool crouching;
 
+    public delegate void Jump();
+    public Jump OnJumpPressed;
+
     [HideInInspector]
     public FreeCameraLook camProperties;
     [HideInInspector]
@@ -23,7 +26,7 @@ public class InputHandler : NetworkBehaviour {
     [HideInInspector]
     public Transform camTrans;
 
-    CrosshairManager crosshairManager;
+    UIManager crosshairManager;
     ShakeCamera shakeCam;
     StateManager states;
 
@@ -65,7 +68,7 @@ public class InputHandler : NetworkBehaviour {
             return;
         }
 
-        crosshairManager = CrosshairManager.GetInstance();
+        crosshairManager = UIManager.GetInstance();
         camProperties = FreeCameraLook.GetInstance();
 
         camProperties.target = transform;
@@ -98,7 +101,7 @@ public class InputHandler : NetworkBehaviour {
         // Find where the camera is looking
         Ray ray = new Ray(camTrans.position, camTrans.forward);
         states.lookPosition = ray.GetPoint(20);
-        Debug.Log(states.lookPosition);
+
         RaycastHit hit;
         
         Vector3 lookHitPosition;
@@ -129,7 +132,7 @@ public class InputHandler : NetworkBehaviour {
         Gizmos.color = Color.gray;
         Gizmos.DrawLine(transform.position + (Vector3.up * 1.5f), states.lookHitPosition);
         Gizmos.color = (Color.red + Color.yellow);
-        Gizmos.DrawCube(states.lookHitPosition, Vector3.one * 0.1f);
+        Gizmos.DrawWireCube(states.lookHitPosition, Vector3.one * 0.1f);
     }
 
     [Command]
@@ -188,7 +191,19 @@ public class InputHandler : NetworkBehaviour {
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
         fire3 = Input.GetAxis("Fire3");
-
+        crouching = Input.GetAxis("Crouch") > 0;
+        if (Input.GetAxis("Jump") > 0)
+        {
+            if (OnJumpPressed != null)
+            {
+                OnJumpPressed();
+            }
+        }
+        else
+        {
+            states.canJump = true;
+        }
+        
         if (canSwitch)
         {
             if (Input.GetKeyUp(KeyCode.V))
@@ -217,6 +232,8 @@ public class InputHandler : NetworkBehaviour {
         states.aiming = states.onGround && (mouse2 > 0);
         states.canRun = !states.aiming;
         states.walk = (fire3 > 0);
+
+        states.crouching = (states.onGround && crouching);
 
         states.horizontal = horizontal;
         states.vertical = vertical;

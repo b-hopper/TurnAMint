@@ -14,6 +14,11 @@ public class StateManager : NetworkBehaviour {
     public bool actualShooting;
     public bool reloading;
     public bool onGround;
+    public bool crouching;
+    public bool prone;
+    public bool canJump = true;
+    public bool isJumping;
+    bool canStopJumping;
 
     [HideInInspector] public HealthManager playerHealth;
 
@@ -35,10 +40,19 @@ public class StateManager : NetworkBehaviour {
 
     public CharacterAudioManager audioManager;
 
+    public delegate void JumpEvent();
+
+    public JumpEvent OnJumpLanded;
+    public JumpEvent OnJumpStarted;
+
     [HideInInspector]
     public HandleShooting handleShooting;
     [HideInInspector]
     public HandleAnimations handleAnim;
+    PlayerMovement handleMovement;
+
+
+    public float jumpStrength, jumpTimer;
 
     PlayerRespawn respawn;
 
@@ -52,6 +66,7 @@ public class StateManager : NetworkBehaviour {
         bodyParts = GetComponentsInChildren<Rigidbody>();
         respawn = GetComponent<PlayerRespawn>();
         input = GetComponent<InputHandler>();
+        handleMovement = GetComponent<PlayerMovement>();
     }
 
     private void Start()
@@ -59,12 +74,40 @@ public class StateManager : NetworkBehaviour {
         audioManager = GetComponent<CharacterAudioManager>();
         handleShooting = GetComponent<HandleShooting>();
         handleAnim = GetComponent<HandleAnimations>();
+        input.OnJumpPressed += HandleJump;
+        playerHealth.OnHealthDepleted += PlayerDeath;
+    }
+
+    private void HandleJump()
+    {
+        if (!isJumping && !crouching && !prone && canJump)
+        {
+            canJump = false;
+            isJumping = true;
+
+            GameManager.Instance.Timer.Add(() =>
+            {
+                canStopJumping = true;
+            }, 0.1f);
+
+            if (OnJumpStarted != null)
+            {
+                OnJumpStarted();
+            }
+            
+            handleMovement.HandleJump(jumpStrength);
+            Debug.Log("Jump");
+        }
     }
 
     public override void OnStartLocalPlayer()
     {
         input.enabled = true;
-        respawn.RespawnAtSpawnPoint(this);
+        respawn.RespawnAtSpawnPoint(this, 0);
+
+        UIManager.instance.healthBar.hm = playerHealth;
+        UIManager.instance.healthBar.gameObject.SetActive(true);
+
         base.OnStartLocalPlayer();
     }
 
@@ -106,9 +149,19 @@ public class StateManager : NetworkBehaviour {
         Vector3 origin = transform.position + new Vector3(0, 0.05f, 0);
         RaycastHit hit;
 
-        if (Physics.Raycast(origin, -Vector3.up, out hit, 0.5f, layerMask))
+        if (Physics.Raycast(origin, -Vector3.up, out hit, 0.06f, layerMask))
         {
             retVal = true;
+        }
+
+        if (retVal && canStopJumping)
+        {
+            isJumping = false;
+            canStopJumping = false;
+            if (OnJumpLanded != null)
+            {
+                OnJumpLanded();
+            }
         }
 
         return retVal;
@@ -127,7 +180,7 @@ public class StateManager : NetworkBehaviour {
         }
         networkAnimator.enabled = false;
         input.enabled = false;
-        respawn.RespawnAtSpawnPoint(this);
+        respawn.RespawnAtSpawnPoint(this, 3f);
     }
 
     [Command]
@@ -136,7 +189,7 @@ public class StateManager : NetworkBehaviour {
         RpcPlayerDeath();
     }
 
-    public void PlayerDeath()
+    public void PlayerDeath(Attack attack)
     {
         if (isServer)
         {

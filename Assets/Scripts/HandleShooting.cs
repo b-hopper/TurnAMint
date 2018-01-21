@@ -85,7 +85,6 @@ public class HandleShooting : NetworkBehaviour {
 
                     Vector3 direction = states.lookHitPosition - bulletSpawnPoint.position;
 
-                    print("Origin: " + bulletSpawnPoint.position + ", Direction: " + direction);
                     if (isLocalPlayer)
                     {
                         CmdDoOnShootActions();
@@ -138,6 +137,7 @@ public class HandleShooting : NetworkBehaviour {
         }
     }
 
+    [Command]
     private void CmdDoOnShootActions()
     {
         states.audioManager.PlayGunSound();
@@ -168,7 +168,6 @@ public class HandleShooting : NetworkBehaviour {
     private void CmdRaycastShoot(Vector3 origin, Vector3 direction)
     {
         states.audioManager.PlayGunSound();
-        print("shoot test: " + this);
         RaycastHit hit;
 
         print("Origin: " + origin + ", Direction: " + direction);

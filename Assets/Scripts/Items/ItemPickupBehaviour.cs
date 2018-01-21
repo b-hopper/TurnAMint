@@ -14,7 +14,7 @@ public class ItemPickupBehaviour : MonoBehaviour {
     WeaponItem wpToPickup;
     	
 	void Start () {
-        UItext = CrosshairManager.GetInstance().pickupItemsText;
+        UItext = UIManager.GetInstance().pickupItemsText;
         wm = GetComponent<WeaponManager>();
         UItext.gameObject.SetActive(false);
 	}
