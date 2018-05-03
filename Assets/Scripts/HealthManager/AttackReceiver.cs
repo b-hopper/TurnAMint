@@ -1,18 +1,11 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Networking;
 
-public class AttackReceiver : NetworkBehaviour, IAttackReceiver {
+public class AttackReceiver : MonoBehaviour, IAttackReceiver {
 	public UnityEvent OnAttackReceived;
-
-    [ClientRpc]
-    public void RpcReceiveAttack(Attack attack)
+    
+    public void ReceiveAttack(Attack attack)
     {
         OnAttackReceived.Invoke();
-    }
-    [Command]
-    public void CmdReceiveAttack(Attack attack)
-    {
-        RpcReceiveAttack(attack);
     }
 }

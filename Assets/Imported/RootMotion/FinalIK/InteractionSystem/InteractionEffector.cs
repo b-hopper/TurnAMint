@@ -236,7 +236,7 @@ namespace RootMotion.FinalIK {
 
 			// Apply the current interaction state to the solver
 			interactionObject.Apply(interactionSystem.ik.solver, effectorType, interactionTarget, timer, weight);
-
+            
 			if (pickUp) PickUp(root);
 			if (pause) Pause();
 

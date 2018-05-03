@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class DamagePassthrough : NetworkBehaviour, IAttackReceiver {
+public class DamagePassthrough : MonoBehaviour, IAttackReceiver {
     HealthManager parentHM;
 
     [SerializeField]
@@ -13,18 +12,10 @@ public class DamagePassthrough : NetworkBehaviour, IAttackReceiver {
     {
         parentHM = GetComponentInParent<HealthManager>();
     }
-
-    [ClientRpc]
-    public void RpcReceiveAttack(Attack attack)
+    
+    public void ReceiveAttack(Attack attack)
     {
         attack.damage = (int)(attack.damage * damageMultiplier);
-        parentHM.RpcReceiveAttack(attack);
+        parentHM.ReceiveAttack(attack);
     }
-
-    [Command]
-    public void CmdReceiveAttack(Attack attack)
-    {
-        RpcReceiveAttack(attack);
-    }
-
 }

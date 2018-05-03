@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Character 1
+  - Character 2
   layers:
   - Default
   - TransparentFX
@@ -15,10 +17,10 @@ TagManager:
   - 
   - Hitboxes
   - PlayerCollision
-  - 
-  - 
-  - 
-  - 
+  - Pickups
+  - Cameras
+  - PlayerHead
+  - WeaponColliders
   - 
   - 
   - 

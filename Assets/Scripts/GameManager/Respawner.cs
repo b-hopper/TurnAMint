@@ -16,4 +16,9 @@ public class Respawner : MonoBehaviour {
             }, inSeconds);
         }
     }
+
+    public void SetRandomSeed(int seed)
+    {
+        Random.InitState(seed);
+    }
 }

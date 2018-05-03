@@ -6,6 +6,7 @@ public class GameManager {
     
     private GameObject gameObject;
 
+    #region GameManager Instance
     private static GameManager m_Instance;
     public static GameManager Instance
     {
@@ -17,11 +18,40 @@ public class GameManager {
                 m_Instance.gameObject = new GameObject("_gameManager");
                 m_Instance.gameObject.AddComponent<Timer>();
                 m_Instance.gameObject.AddComponent<Respawner>();
+                GameObject tmp = new GameObject("_objPool");
+                tmp.transform.parent = m_Instance.gameObject.transform;
+                tmp.gameObject.AddComponent<ObjectPool>();
             }
             return m_Instance;
         }
     }
-    
+    #endregion
+
+    #region Local Player Reference
+
+    public StateManager LocalPlayerReference;
+
+    #endregion
+
+    #region Camera References
+
+    private CameraReferences m_CamRefs;
+    public CameraReferences CamRefs
+    {
+        get
+        {
+            if (m_CamRefs == null)
+            {
+                m_CamRefs = GameObject.FindObjectOfType<CameraReferences>();
+            }
+            return m_CamRefs;
+        }
+    }
+
+    #endregion
+
+    #region Timer
+
     private Timer m_Timer;
     public Timer Timer {
         get
@@ -34,6 +64,39 @@ public class GameManager {
         }
     }
 
+    #endregion
+
+    #region UIManager
+    private UIManager m_UIManager;
+    public UIManager UIManager
+    {
+        get
+        {
+            if (m_UIManager == null)
+            {
+                m_UIManager = GameObject.FindObjectOfType<UIManager>();
+            }
+            return m_UIManager;
+        }
+    }
+    #endregion
+
+    #region Object Pool
+    private ObjectPool m_ObjectPool;
+    public ObjectPool ObjectPool
+    {
+        get
+        {
+            if(m_ObjectPool == null)
+            {
+                m_ObjectPool = gameObject.GetComponentInChildren<ObjectPool>();
+            }
+            return m_ObjectPool;
+        }
+    }
+    #endregion
+
+    #region Respawner
     private Respawner m_Respawner;
     public Respawner Respawner
     {
@@ -46,5 +109,5 @@ public class GameManager {
             return m_Respawner;
         }
     }
-
+    #endregion
 }

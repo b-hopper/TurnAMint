@@ -6,8 +6,10 @@ public class Timer : MonoBehaviour {
     
     private class TimedEvent
     {
-        public float TimeToExecute;
+        public float InitialTimeToExecute;
         public Callback Method;
+        public int Iterations;
+        internal float TimeToAddPerIteration;
     }
 
     private List<TimedEvent> events;
@@ -19,17 +21,19 @@ public class Timer : MonoBehaviour {
         events = new List<TimedEvent>();
     }
 
-    public void Add(Callback method, float inSeconds)
+    public void Add(Callback method, float inSeconds, int iterations = 1)
     {
         events.Add(new TimedEvent
         {
             Method = method,
-            TimeToExecute = Time.time + inSeconds
+            InitialTimeToExecute = Time.time + inSeconds,
+            Iterations = iterations,
+            TimeToAddPerIteration = inSeconds
         });
     }
 
     private void Update()
-    {
+    { 
         if (events.Count == 0)
         {
             return;
@@ -38,10 +42,18 @@ public class Timer : MonoBehaviour {
         for (int i = 0; i < events.Count; i++)
         {
             TimedEvent timedEvent = events[i];
-            if (Time.time >= timedEvent.TimeToExecute)
+            if (Time.time >= timedEvent.InitialTimeToExecute)
             {
                 timedEvent.Method();
-                events.Remove(timedEvent);
+                timedEvent.Iterations--;
+                if (timedEvent.Iterations <= 0)
+                {
+                    events.Remove(timedEvent);
+                }
+                else
+                {
+                    timedEvent.InitialTimeToExecute = Time.time + timedEvent.TimeToAddPerIteration;
+                }
             }
         }
     }
