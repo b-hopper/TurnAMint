@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawner : MonoBehaviour {
-    
-    public void Despawn(GameObject go, float inSeconds)
+namespace TurnAMint.Management
+{
+    public class Respawner : MonoBehaviour
     {
-        go.SetActive(false);
 
-        if (inSeconds > 0)
+        public void Despawn(GameObject go, float inSeconds)
         {
-            GameManager.Instance.Timer.Add(() =>
-            {
-                go.SetActive(true);
-            }, inSeconds);
-        }
-    }
+            go.SetActive(false);
 
-    public void SetRandomSeed(int seed)
-    {
-        Random.InitState(seed);
+            if (inSeconds > 0)
+            {
+                GameManager.Instance.Timer.Add(() =>
+                {
+                    go.SetActive(true);
+                }, inSeconds);
+            }
+        }
+
+        public void SetRandomSeed(int seed)
+        {
+            Random.InitState(seed);
+        }
     }
 }

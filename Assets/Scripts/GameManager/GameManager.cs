@@ -1,113 +1,119 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TurnAMint.UI;
 
-public class GameManager {
-    
-    private GameObject gameObject;
-
-    #region GameManager Instance
-    private static GameManager m_Instance;
-    public static GameManager Instance
+namespace TurnAMint.Management
+{
+    public class GameManager
     {
-        get
+
+        private GameObject gameObject;
+
+        #region GameManager Instance
+        private static GameManager m_Instance;
+        public static GameManager Instance
         {
-            if (m_Instance == null)
+            get
             {
-                m_Instance = new GameManager();
-                m_Instance.gameObject = new GameObject("_gameManager");
-                m_Instance.gameObject.AddComponent<Timer>();
-                m_Instance.gameObject.AddComponent<Respawner>();
-                GameObject tmp = new GameObject("_objPool");
-                tmp.transform.parent = m_Instance.gameObject.transform;
-                tmp.gameObject.AddComponent<ObjectPool>();
+                if (m_Instance == null)
+                {
+                    m_Instance = new GameManager();
+                    m_Instance.gameObject = new GameObject("_gameManager");
+                    m_Instance.gameObject.AddComponent<Timer>();
+                    m_Instance.gameObject.AddComponent<Respawner>();
+                    GameObject tmp = new GameObject("_objPool");
+                    tmp.transform.parent = m_Instance.gameObject.transform;
+                    tmp.gameObject.AddComponent<ObjectPool>();
+                }
+                return m_Instance;
             }
-            return m_Instance;
         }
-    }
-    #endregion
+        #endregion
 
-    #region Local Player Reference
+        #region Local Player Reference
 
-    public StateManager LocalPlayerReference;
+        public Player.StateManager LocalPlayerReference;
 
-    #endregion
+        #endregion
 
-    #region Camera References
+        #region Camera References
 
-    private CameraReferences m_CamRefs;
-    public CameraReferences CamRefs
-    {
-        get
+        private CameraReferences m_CamRefs;
+        public CameraReferences CamRefs
         {
-            if (m_CamRefs == null)
+            get
             {
-                m_CamRefs = GameObject.FindObjectOfType<CameraReferences>();
+                if (m_CamRefs == null)
+                {
+                    m_CamRefs = GameObject.FindObjectOfType<CameraReferences>();
+                }
+                return m_CamRefs;
             }
-            return m_CamRefs;
         }
-    }
 
-    #endregion
+        #endregion
 
-    #region Timer
+        #region Timer
 
-    private Timer m_Timer;
-    public Timer Timer {
-        get
+        private Timer m_Timer;
+        public Timer Timer
         {
-            if (m_Timer == null)
+            get
             {
-                m_Timer = gameObject.GetComponent<Timer>();
+                if (m_Timer == null)
+                {
+                    m_Timer = gameObject.GetComponent<Timer>();
+                }
+                return m_Timer;
             }
-            return m_Timer;
         }
-    }
 
-    #endregion
+        #endregion
 
-    #region UIManager
-    private UIManager m_UIManager;
-    public UIManager UIManager
-    {
-        get
+        #region UIManager
+        private UIManager m_UIManager;
+        public UIManager UIManager
         {
-            if (m_UIManager == null)
+            get
             {
-                m_UIManager = GameObject.FindObjectOfType<UIManager>();
+                if (m_UIManager == null)
+                {
+                    m_UIManager = GameObject.FindObjectOfType<UIManager>();
+                }
+                return m_UIManager;
             }
-            return m_UIManager;
         }
-    }
-    #endregion
+        #endregion
 
-    #region Object Pool
-    private ObjectPool m_ObjectPool;
-    public ObjectPool ObjectPool
-    {
-        get
+        #region Object Pool
+        private ObjectPool m_ObjectPool;
+        public ObjectPool ObjectPool
         {
-            if(m_ObjectPool == null)
+            get
             {
-                m_ObjectPool = gameObject.GetComponentInChildren<ObjectPool>();
+                if (m_ObjectPool == null)
+                {
+                    m_ObjectPool = gameObject.GetComponentInChildren<ObjectPool>();
+                }
+                return m_ObjectPool;
             }
-            return m_ObjectPool;
         }
-    }
-    #endregion
+        #endregion
 
-    #region Respawner
-    private Respawner m_Respawner;
-    public Respawner Respawner
-    {
-        get
+        #region Respawner
+        private Respawner m_Respawner;
+        public Respawner Respawner
         {
-            if (m_Respawner == null)
+            get
             {
-                m_Respawner = gameObject.GetComponent<Respawner>();
+                if (m_Respawner == null)
+                {
+                    m_Respawner = gameObject.GetComponent<Respawner>();
+                }
+                return m_Respawner;
             }
-            return m_Respawner;
         }
+        #endregion
     }
-    #endregion
 }

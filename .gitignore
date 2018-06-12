@@ -35,3 +35,6 @@ sysinfo.txt
 
 # Texture files (Too big for GitHub)
 *.tga
+
+# Other
+*.rar

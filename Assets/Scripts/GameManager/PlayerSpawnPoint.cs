@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlayerSpawnPoint : NetworkBehaviour {
-    
-    private void OnDrawGizmos()
+namespace TurnAMint.Management
+{
+    public class PlayerSpawnPoint : NetworkBehaviour
     {
-        Gizmos.color = Color.blue;
-        Gizmos.matrix = transform.localToWorldMatrix;
-        Gizmos.DrawWireCube(Vector3.zero + Vector3.up, Vector3.one + Vector3.up);
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(Vector3.zero + Vector3.up, Vector3.one + Vector3.up);
+        }
     }
 }

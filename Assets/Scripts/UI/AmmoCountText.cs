@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TurnAMint.Player;
 
-public class AmmoCountText : MonoBehaviour {
-
-    public Text inMagCount, totalCount;
-
-    [HideInInspector] public StateManager state;
-
-    private void FixedUpdate()
+namespace TurnAMint.UI
+{
+    public class AmmoCountText : MonoBehaviour
     {
-        inMagCount.text = state.currentWeapon.currentRoundsInMag.ToString();
-        totalCount.text = state.inventoryHandler.GetTotalAmmo(state.currentWeapon.ammoType).ToString();
+
+        public Text inMagCount, totalCount;
+
+        [HideInInspector] public StateManager state;
+
+        private void FixedUpdate()
+        {
+            inMagCount.text = state.currentWeapon.currentRoundsInMag.ToString();
+            totalCount.text = state.inventoryHandler.GetTotalAmmo(state.currentWeapon.ammoType).ToString();
+        }
     }
 }

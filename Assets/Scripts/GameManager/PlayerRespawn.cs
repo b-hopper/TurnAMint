@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRespawn : MonoBehaviour
+namespace TurnAMint.Management
 {
-    [SerializeField] PlayerSpawnPoint[] spawnPoints;
-
-    public void RespawnAtSpawnPoint(StateManager playerState, float delay)
+    public class PlayerRespawn : MonoBehaviour
     {
-        GameManager.Instance.Timer.Add(() =>
+        [SerializeField] PlayerSpawnPoint[] spawnPoints;
+
+        public void RespawnAtSpawnPoint(Player.StateManager playerState, float delay)
         {
-            playerState.playerHealth.Reset();
-            if (spawnPoints.Length > 0)
+            GameManager.Instance.Timer.Add(() =>
             {
-                int spawnIndex = Random.Range(0, spawnPoints.Length);
-                transform.position = spawnPoints[spawnIndex].transform.position;
-                transform.rotation = spawnPoints[spawnIndex].transform.rotation;
-            }
-        }, delay); 
+                playerState.playerHealth.Reset();
+                if (spawnPoints.Length > 0)
+                {
+                    int spawnIndex = Random.Range(0, spawnPoints.Length);
+                    transform.position = spawnPoints[spawnIndex].transform.position;
+                    transform.rotation = spawnPoints[spawnIndex].transform.rotation;
+                }
+            }, delay);
+        }
     }
 }

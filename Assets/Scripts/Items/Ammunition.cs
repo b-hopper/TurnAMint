@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ammunition : ItemBase {
-    public AmmoType ammoType;
-}
-
-public enum AmmoType
+namespace TurnAMint.Items
 {
-    cal_556 = 0,
-    cal_762 = 1,
-    cal_45 = 2,
-    cal_9mm = 3
+    public class Ammunition : ItemBase
+    {
+        public AmmoType ammoType;
+    }
+
+    public enum AmmoType
+    {
+        cal_556 = 0,
+        cal_9mm = 1,
+        cal_762 = 2,
+        cal_45 = 3
+    }
 }

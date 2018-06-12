@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114651145960488282}
   - component: {fileID: 114501492182913854}
   - component: {fileID: 114497473598688054}
+  - component: {fileID: 65217338101229000}
   m_Layer: 5
   m_Name: Item Slot (1)
   m_TagString: Untagged
@@ -100,6 +101,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &65217338101229000
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1409960835453590}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 45, y: 45, z: 0}
+  m_Center: {x: 22.5, y: -22.5, z: 0}
 --- !u!114 &114045719494030366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,15 +204,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d3bbbbbc81f2b4c84e9b3fb2dadd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  img: {fileID: 114651145960488282}
+  txt: {fileID: 114101030162220436}
+  highlightColor: {r: 1, g: 1, b: 1, a: 1}
   smallSprite: {fileID: 0}
   largeSprite: {fileID: 0}
   emptySprite: {fileID: 0}
-  countText: {fileID: 114101030162220436}
   detailGO: {fileID: 1623689711221746}
   offset: {x: 0, y: 0, z: 0}
-  isOccupied: 0
-  amount: 0
-  mouseoverColor: {r: 0.43529412, g: 0.43529412, b: 0.43529412, a: 1}
 --- !u!114 &114501492182913854
 MonoBehaviour:
   m_ObjectHideFlags: 1

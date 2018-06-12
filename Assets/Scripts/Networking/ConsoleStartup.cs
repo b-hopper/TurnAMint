@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConsoleStartup : MonoBehaviour {
-    
-	void Awake () {
+namespace TurnAMint.Networking
+{
+    public class ConsoleStartup : MonoBehaviour
+    {
 
-        if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
-
+        void Awake()
         {
-            gameObject.AddComponent<ServerConsole>();
 
-            FindObjectOfType<NetManager>().StartServer();
+            if (SystemInfo.graphicsDeviceType == UnityEngine.Rendering.GraphicsDeviceType.Null)
 
-            Application.targetFrameRate = 60;
+            {
+                gameObject.AddComponent<ServerConsole>();
+
+                FindObjectOfType<NetManager>().StartServer();
+
+                Application.targetFrameRate = 60;
+            }
         }
-    }	
+    }
 }

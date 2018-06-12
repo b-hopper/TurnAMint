@@ -1653,6 +1653,7 @@ MonoBehaviour:
   value: 1
   weapon: {fileID: 0}
   ammo: {fileID: 0}
+  UI: {fileID: 0}
   interactionObject: {fileID: 0}
   stats:
     damage: 30
@@ -1695,7 +1696,7 @@ MonoBehaviour:
   holsteredPosition: {x: 0.082, y: 0.071, z: 0.036}
   holsteredEulerAngles: {x: 272.692, y: -67.701, z: 148.144}
   weaponClass: 1
-  ammoType: 3
+  ammoType: 1
   ammoPrefab: {fileID: 1998680921485786, guid: 8f1b86b975060d44f856b9a961bc6ba5, type: 2}
   currentRoundsInMag: 0
   currentHolster: {fileID: 0}
@@ -1762,8 +1763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883eec1997c49f441a9ba06631a39d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallInventoryImage: {fileID: 0}
-  largeInventoryImage: {fileID: 0}
+  SmallSprite: {fileID: 0}
+  LargeSprite: {fileID: 0}
 --- !u!114 &114697223580770348
 MonoBehaviour:
   m_ObjectHideFlags: 1
